@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:id="@+id/desc_button"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="72dp"
+        android:translationZ="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/desc_block" />
+
+    <ImageView
+        android:id="@+id/desc"
+        android:layout_width="286dp"
+        android:layout_height="77dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/desc_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/desc_text1" />
+
+    <ImageButton
+        android:id="@+id/tp_logo"
+        android:layout_width="91dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="60dp"
+        android:translationZ="2dp"
+        android:contentDescription="@string/toilet_paper"
+        android:background="@drawable/toilet_paper_logo"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/desc_button"
+        app:srcCompat="@drawable/toilet_paper_logo" />
+
+    <ImageView
+        android:id="@+id/tp_text"
+        android:layout_width="302dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="63dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/desc"
+        app:srcCompat="@drawable/toilet_paper_text" />
+
+    <ImageButton
+        android:id="@+id/hs_logo"
+        android:layout_width="91dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="32dp"
+        android:translationZ="2dp"
+        android:contentDescription="@string/hand_sanitizer"
+        android:background="@drawable/hand_san_logo"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tp_logo"
+        app:srcCompat="@drawable/hand_san_logo" />
+
+    <ImageView
+        android:id="@+id/hs_text"
+        android:layout_width="302dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tp_text"
+        app:srcCompat="@drawable/hand_san_text" />
+
+    <ImageButton
+        android:id="@+id/wb_logo"
+        android:layout_width="91dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="32dp"
+        android:translationZ="2dp"
+        android:contentDescription="@string/water_bottles"
+        android:background="@drawable/water_bot_logo"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hs_logo"
+        app:srcCompat="@drawable/water_bot_logo" />
+
+    <ImageView
+        android:id="@+id/wb_text"
+        android:layout_width="302dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hs_text"
+        app:srcCompat="@drawable/water_bot_text" />
+
+    <ImageView
+        android:id="@+id/coming_soon"
+        android:layout_width="319dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wb_text"
+        app:srcCompat="@drawable/coming_soon" />
+</androidx.constraintlayout.widget.ConstraintLayout>
