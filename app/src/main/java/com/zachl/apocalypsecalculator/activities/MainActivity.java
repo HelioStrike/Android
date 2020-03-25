@@ -1,4 +1,4 @@
-package com.zachl.apocalypsecalculator;
+package com.zachl.apocalypsecalculator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -7,17 +7,17 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.zachl.apocalypsecalculator.R;
 import com.zachl.apocalypsecalculator.activities.CalculatorActivity;
-import com.zachl.apocalypsecalculator.runnables.Buffer;
-import com.zachl.apocalypsecalculator.runnables.BufferRunnable;
-import com.zachl.apocalypsecalculator.runnables.UpdateRunnable;
-import com.zachl.apocalypsecalculator.runnables.Updating;
+import com.zachl.apocalypsecalculator.entities.runnables.Buffer;
+import com.zachl.apocalypsecalculator.entities.runnables.BufferRunnable;
+import com.zachl.apocalypsecalculator.entities.runnables.UpdateRunnable;
+import com.zachl.apocalypsecalculator.entities.runnables.Updating;
 
 public class MainActivity extends AppCompatActivity implements Updating {
     /**
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements Updating {
         descT = findViewById(R.id.desc_2);
 
         descSrces = new String[]{getString(R.string.description_2_1), getString(R.string.description_2_2), getString(R.string.description_2_3),
-                getString(R.string.description_2_4), getString(R.string.description_2_5)};
+                getString(R.string.description_2_4)};
         View.OnTouchListener buttonL = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

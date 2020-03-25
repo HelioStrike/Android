@@ -1,4 +1,4 @@
-package com.zachl.apocalypsecalculator.entities;
+package com.zachl.apocalypsecalculator.entities.math;
 
 public class Multiplier {
     /**

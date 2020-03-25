@@ -1,8 +1,4 @@
-package com.zachl.apocalypsecalculator.runnables;
-
-import android.view.View;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.zachl.apocalypsecalculator.entities.runnables;
 
 import java.util.Timer;
 import java.util.TimerTask;

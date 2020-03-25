@@ -15,7 +15,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.CalculatorActivity"/>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,10 +23,10 @@
         </activity>
         <activity
             android:name=".activities.CalculatorActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zachl.apocalypsecalculator.MainActivity" />
+                android:value="com.zachl.apocalypsecalculator.activities.MainActivity" />
         </activity>
 
         <meta-data

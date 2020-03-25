@@ -1,6 +1,5 @@
 package com.zachl.apocalypsecalculator.activities;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -14,12 +13,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zachl.apocalypsecalculator.MainActivity;
 import com.zachl.apocalypsecalculator.R;
-import com.zachl.apocalypsecalculator.runnables.Buffer;
-import com.zachl.apocalypsecalculator.runnables.BufferRunnable;
-import com.zachl.apocalypsecalculator.runnables.UpdateRunnable;
-import com.zachl.apocalypsecalculator.runnables.Updating;
+import com.zachl.apocalypsecalculator.entities.runnables.Buffer;
+import com.zachl.apocalypsecalculator.entities.runnables.BufferRunnable;
+import com.zachl.apocalypsecalculator.entities.runnables.UpdateRunnable;
+import com.zachl.apocalypsecalculator.entities.runnables.Updating;
 
 import java.util.ArrayList;
 

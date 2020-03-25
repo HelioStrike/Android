@@ -2,31 +2,24 @@ package com.zachl.apocalypsecalculator.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.MotionEventCompat;
 
-import com.zachl.apocalypsecalculator.MainActivity;
 import com.zachl.apocalypsecalculator.R;
-import com.zachl.apocalypsecalculator.runnables.UpdateRunnable;
-import com.zachl.apocalypsecalculator.runnables.Updating;
+import com.zachl.apocalypsecalculator.entities.runnables.Updating;
+import com.zachl.apocalypsecalculator.entities.wrappers.ManagedActivity;
 
 import java.util.ArrayList;
 
 import static android.view.MotionEvent.INVALID_POINTER_ID;
 
-public class CalculatorActivity extends AppCompatActivity implements Updating {
+public class CalculatorActivity extends ManagedActivity implements Updating {
     public static final String EXTRA_SUFF = ".ANSWER.";
     public static final String EXTRA_PERCENT = ".ANSWER.PERCENT";
     private int[] answerViews;
@@ -55,8 +48,7 @@ public class CalculatorActivity extends AppCompatActivity implements Updating {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-
-        sources.add(new ArrayList<Integer>());
+        /*sources.add(new ArrayList<Integer>());
         sources.add(new ArrayList<Integer>());
         sources.get(1).add(R.string.resource_1);
         sources.get(1).add(R.string.dir_3_tp);
@@ -68,20 +60,14 @@ public class CalculatorActivity extends AppCompatActivity implements Updating {
 
         views.add(R.id.subtitle);
         views.add(R.id.prompt3);
-        views.add(R.id.prompt5);
+        views.add(R.id.prompt5);*/
 
-        colorViews.add(R.id.header);
-        colorViews.add(R.id.calc);
-        colorViews.add(R.id.slider);
-
-        colors.add(R.color.hs);
-        colors.add(R.color.tp);
-        colors.add(R.color.wb);
         Intent intent = getIntent();
         type = intent.getStringExtra(MainActivity.EXTRA);
 
         icon = findViewById(R.id.icon);
-        iconSrces = new int[]{R.drawable.hs_icon, R.drawable.tp_icon, R.drawable.wb_icon};
+        build((View)icon.getParent(), type);
+        /*iconSrces = new int[]{R.drawable.hs_icon, R.drawable.tp_icon, R.drawable.wb_icon};
         if(!type.equalsIgnoreCase("hs")) {
             typeI++;
             if (type.equalsIgnoreCase("wb"))
@@ -90,11 +76,7 @@ public class CalculatorActivity extends AppCompatActivity implements Updating {
             for(int i = 0; i < sources.get(typeI).size(); i++){
                 ((TextView)findViewById(views.get(i))).setText(getString(sources.get(typeI).get(i)));
             }
-            for(int i = 0; i < colorViews.size(); i++){
-                DrawableCompat.setTint(((ImageView)findViewById(colorViews.get(i))).getDrawable(), ContextCompat.getColor(getApplicationContext(), colors.get(typeI)));
-                //((ImageView)findViewById(colorViews.get(i))).setColorFilter(colors.get(typeI));
-            }
-            ((ImageView)icon).setImageResource(iconSrces[typeI]);
+            ((ImageView)icon).setImageResource(iconSrces[typeI]);*/
 
 
         percent = findViewById(R.id.percent);

@@ -3,6 +3,8 @@
     <string name="toilet_paper">tp</string>
     <string name="hand_sanitizer">hs</string>
     <string name="water_bottles">wb</string>
+    <string name="type_mod">type</string>
+    <string name="color_mod">color</string>
 
     <string name="title">APOCALYPSE CALCULATOR</string>
     <string name="description_1">Don\'t panic!</string>
@@ -10,7 +12,7 @@
     <string name="description_2_1">Calculate your apocalypse</string>
     <string name="description_2_2">Calculate your mass hysteria</string>
     <string name="description_2_3">Calculate your global panic</string>
-    <string name="description_2_5">Calculate your end of times</string>
+    <string name="description_2_4">Calculate your end of times</string>
 
     <string name="description_3">needs for resources such as:</string>
 
@@ -44,6 +46,6 @@
     <string name="result_3_neg_2"> days without </string>
     <string name="result_3_neg_3"> </string>
 
-    <string name="results_conclusion_pos">Congratulations</string>
-    <string name="results_conclusion_neg">Good luck and godspeed</string>
+    <string name="results_conclusion_pos">Congratulations.</string>
+    <string name="results_conclusion_neg">Survive.</string>
 </resources>

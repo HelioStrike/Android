@@ -1,6 +1,4 @@
-package com.zachl.apocalypsecalculator.entities;
-
-import java.util.ArrayList;
+package com.zachl.apocalypsecalculator.entities.math;
 
 public class Function {
     /**
