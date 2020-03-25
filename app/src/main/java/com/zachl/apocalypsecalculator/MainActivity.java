@@ -1,51 +1,65 @@
 package com.zachl.apocalypsecalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.zachl.apocalypsecalculator.activities.CalculatorActivity;
+import com.zachl.apocalypsecalculator.runnables.Buffer;
+import com.zachl.apocalypsecalculator.runnables.BufferRunnable;
+import com.zachl.apocalypsecalculator.runnables.UpdateRunnable;
+import com.zachl.apocalypsecalculator.runnables.Updating;
 
-public class MainActivity extends AppCompatActivity implements Updating{
+public class MainActivity extends AppCompatActivity implements Updating {
     /**
      * Every activity is a screen/page on the app
      */
     public static final String EXTRA = "COM.ZACHL.CALCULATOR.TYPE";
     private UpdateRunnable updateR;
     private ImageButton tp, hs, wb, desc;
-    private ImageView descT;
+    private TextView descT;
+    private ConstraintLayout ui;
 
-    private float scaleIncr = 0.015f;
+    private float scaleIncr;
     private float target;
     private int descI;
-    private int[] descSrces;
+    private String[] descSrces;
+    private int headerBuffer = 10;
+    private float tempScale = 1;
+
+    private boolean initd = false;
+    private boolean triggered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        tp = findViewById(R.id.tp_logo);
-        hs = findViewById(R.id.hs_logo);
-        wb = findViewById(R.id.wb_logo);
-        desc = findViewById(R.id.desc_button);
-        descT = findViewById(R.id.desc);
+        setContentView(R.layout.activity_main_key1);
+        tp = findViewById(R.id.tp_button);
+        hs = findViewById(R.id.hs_button);
+        wb = findViewById(R.id.wb_button);
+        desc = findViewById(R.id.header);
+        descT = findViewById(R.id.desc_2);
 
-        descSrces = new int[]{R.drawable.desc_text1, R.drawable.desc_text2, R.drawable.desc_text3, R.drawable.desc_text4, R.drawable.desc_text5};
+        descSrces = new String[]{getString(R.string.description_2_1), getString(R.string.description_2_2), getString(R.string.description_2_3),
+                getString(R.string.description_2_4), getString(R.string.description_2_5)};
         View.OnTouchListener buttonL = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    expand(v, 1.5f, 0.015f);
+                if (event.getAction() == MotionEvent.ACTION_DOWN && !triggered) {
+                    expand(v, 1.3f, 0.015f);
                     return true;
                 }
-                else if(event.getAction() == MotionEvent.ACTION_UP){
-                    expand(v, 1f, -0.025f);
+                else if(event.getAction() == MotionEvent.ACTION_UP || triggered){
+                    expand(v, 1f, -0.01f);
                     return true;
                 }
                 return false;
@@ -55,6 +69,28 @@ public class MainActivity extends AppCompatActivity implements Updating{
         hs.setOnTouchListener(buttonL);
         wb.setOnTouchListener(buttonL);
         desc.setOnTouchListener(buttonL);
+
+        ui = findViewById(R.id.ui);
+
+        BufferRunnable buffer = new BufferRunnable(new Buffer() {
+            @Override
+            public void wake() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        init();
+                    }
+                });
+            }
+        }, headerBuffer);
+        buffer.start();
+    }
+    public void init(){
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.load(this, R.layout.activity_main);
+        TransitionManager.beginDelayedTransition(ui);
+        constraintSet.applyTo(ui);
+        initd = true;
     }
 
     public void expand(View view, float target, float scaleIncr){
@@ -65,17 +101,15 @@ public class MainActivity extends AppCompatActivity implements Updating{
         updateR.start(view);
         this.scaleIncr = scaleIncr;
         this.target = target;
+        this.tempScale = view.getScaleY();
     }
-
     public void trigger(View view){
         switch(view.getId()){
-            case R.id.desc_button:
+            case R.id.header:
                 if(descI == descSrces.length - 1)
                     descI = -1;
                 descI++;
-                descT.setImageResource(descSrces[descI]);
-                desc.setScaleX(1);
-                desc.setScaleY(1);
+                descT.setText(descSrces[descI]);
                 break;
             default:
                 Intent intent = new Intent(getApplicationContext(), CalculatorActivity.class);
@@ -85,14 +119,25 @@ public class MainActivity extends AppCompatActivity implements Updating{
     }
     @Override
     public void update(View view) {
-        if(view.getScaleY() > target + 0.05f || view.getScaleY() < target - 0.05f){
-            view.setScaleY(view.getScaleY() + scaleIncr);
-            view.setScaleX(view.getScaleX() + scaleIncr);
-        }
-        else{
+        if (tempScale > target + 0.02f || tempScale < target -0.02f) {
+            tempScale += scaleIncr;
+            view.setScaleY(tempScale);
+            view.setScaleX(tempScale);
+        } else {
             updateR.end();
-            if(target > 1)
-                trigger(view);
+            if (target > 1) {
+                triggered = true;
+                final View fview = view;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        trigger(fview);
+                    }
+                });
+            }
+            else{
+                triggered = false;
+            }
         }
     }
 }

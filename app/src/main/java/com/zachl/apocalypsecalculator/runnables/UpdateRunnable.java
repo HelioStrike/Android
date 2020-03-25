@@ -1,4 +1,4 @@
-package com.zachl.apocalypsecalculator;
+package com.zachl.apocalypsecalculator.runnables;
 
 import android.view.View;
 
@@ -28,18 +28,26 @@ public class UpdateRunnable{
         timer = new Timer();
         this.refresh = refresh;
     }
-    public void start(View view){
+    public void start(View view) {
         final View fView = view;
         running = true;
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                final AppCompatActivity temp = activity;
-                if(temp instanceof Updating){
-                    ((Updating)temp).update(fView);
+        try {
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    try {
+                        final AppCompatActivity temp = activity;
+                        if (temp instanceof Updating) {
+                            ((Updating) temp).update(fView);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        }, 0, refresh);
+            }, 0, refresh);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     public void end(){
         timer.cancel();
