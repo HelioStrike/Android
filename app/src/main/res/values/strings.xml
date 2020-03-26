@@ -18,13 +18,9 @@
 
     <string name="dir_1">1. Fill out the following information</string>
     <string name="dir_2">Days until the end of your quarantine:</string>
-    <string name="dir_3_tp">Current toilet paper count:</string>
-    <string name="dir_3_hs">Current hand sanitizer count:</string>
-    <string name="dir_3_wb">Current water bottle count:</string>
+
     <string name="dir_4">Count of persons quarantined with you:</string>
-    <string name="dir_5_tp">2. Describe your normal toilet paper</string>
-    <string name="dir_5_hs">2. Describe your normal hand sanitizer</string>
-    <string name="dir_5_wb">2. Describe your normal water bottle</string>
+
     <string name="dir_5_2">    use comparatively</string>
     <string name="slider_1">80%</string>
     <string name="slider_2">120%</string>
@@ -33,6 +29,7 @@
     <string name="resource_1">Toilet Paper</string>
     <string name="resource_2">Hand Sanitizer</string>
     <string name="resource_3">Water Bottles</string>
+
     <string name="coming_soon">More resources coming soon.</string>
 
     <string name="hint_1">Day/s</string>
@@ -48,4 +45,25 @@
 
     <string name="results_conclusion_pos">Congratulations.</string>
     <string name="results_conclusion_neg">Survive.</string>
+
+    <string name="dir_3_hs">Current hand sanitizer count:</string>
+    <string name="dir_5_hs">2. Describe your normal hand sanitizer</string>
+
+    <string-array name="resources">
+        <item name="resources_1">Hand Sanitizer</item>
+        <item name="resources_2">Toilet Paper</item>
+        <item name="resources_3">Water Bottles</item>
+    </string-array>
+
+    <string-array name="current_array">
+        <item name="dir_3_hs">Current hand sanitizer count:</item>
+        <item name="dir_3_tp">Current toilet paper count:</item>
+        <item name="dir_3_wb">Current water bottle count:</item>
+    </string-array>
+
+    <string-array name="describe_array">
+        <item name="dir_5_hs">2. Describe your normal hand sanitizer</item>
+        <item name="dir_5_tp">2. Describe your normal toilet paper</item>
+        <item name="dir_5_wb">2. Describe your normal water bottle</item>
+    </string-array>
 </resources>

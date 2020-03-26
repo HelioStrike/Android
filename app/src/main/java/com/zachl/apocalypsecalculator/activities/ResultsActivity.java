@@ -18,10 +18,11 @@ import com.zachl.apocalypsecalculator.entities.runnables.Buffer;
 import com.zachl.apocalypsecalculator.entities.runnables.BufferRunnable;
 import com.zachl.apocalypsecalculator.entities.runnables.UpdateRunnable;
 import com.zachl.apocalypsecalculator.entities.runnables.Updating;
+import com.zachl.apocalypsecalculator.entities.wrappers.ManagedActivity;
 
 import java.util.ArrayList;
 
-public class ResultsActivity extends AppCompatActivity implements Updating {
+public class ResultsActivity extends ManagedActivity implements Updating {
     private int[] answers = new int[3];
     private String type;
     //private Function.Eq eq = Function.Eq.Tp;
@@ -32,61 +33,20 @@ public class ResultsActivity extends AppCompatActivity implements Updating {
     private int resultI;
     private int headerBuffer = 5;
     private int textBuffer = 8;
-
-    private ArrayList<Integer> views = new ArrayList<>();
-    private ArrayList<ArrayList<Integer>> sources = new ArrayList<>();
-    private ArrayList<Integer> colorViews = new ArrayList<>();
-    private ArrayList<Integer> colors = new ArrayList<>();
-
     private View icon;
-    private int[] iconSrces;
-    private TextView dualPrompt1, dualPrompt2;
-    private int typeI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_key1);
 
-        sources.add(new ArrayList<Integer>());
-        sources.add(new ArrayList<Integer>());
-        sources.get(1).add(R.string.resource_1);
-        sources.get(1).add(R.string.resource_1);
-        sources.add(new ArrayList<Integer>());
-        sources.get(2).add(R.string.resource_3);
-        sources.get(2).add(R.string.resource_3);
-
-        views.add(R.id.subtitle2);
-        views.add(R.id.text8);
-
-        colorViews.add(R.id.header);
-        colorViews.add(R.id.home);
-
-        colors.add(R.color.hs);
-        colors.add(R.color.tp);
-        colors.add(R.color.wb);
-
         Intent intent = getIntent();
         type = intent.getStringExtra(MainActivity.EXTRA);
+        icon = findViewById(R.id.icon2);
+        build((View)icon.getParent(), type);
         for(int i = 0; i < answers.length; i++){
             answers[i] = Integer.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_SUFF + i));
         }
-
-        icon = findViewById(R.id.icon2);
-        iconSrces = new int[]{R.drawable.hs_icon, R.drawable.tp_icon, R.drawable.wb_icon};
-        if(!type.equalsIgnoreCase("hs")) {
-            typeI++;
-            if (type.equalsIgnoreCase("wb"))
-                typeI ++;
-        }
-            for(int i = 0; i < sources.get(typeI).size(); i++){
-                ((TextView)findViewById(views.get(i))).setText(getString(sources.get(typeI).get(i)));
-            }
-            for(int i = 0; i < colorViews.size(); i++){
-                DrawableCompat.setTint(((ImageView)findViewById(colorViews.get(i))).getDrawable(), ContextCompat.getColor(getApplicationContext(), colors.get(typeI)));
-            }
-            ((ImageView)icon).setImageResource(iconSrces[typeI]);
-
 
         /*switch(type){
             case "tp":

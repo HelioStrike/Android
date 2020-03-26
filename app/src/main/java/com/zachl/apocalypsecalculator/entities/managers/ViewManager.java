@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.zachl.apocalypsecalculator.R;
 
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
@@ -18,6 +20,7 @@ public class ViewManager {
     private View v;
     private String type;
     private final String key;
+    private ArrayList<String[]> sources = new ArrayList<>();
 
     private enum Icon{
         HS(R.drawable.hs_icon),
@@ -29,24 +32,21 @@ public class ViewManager {
             this.val = val;
         }
     }
+
     public ViewManager(AppCompatActivity activity, View v, String type){
         this.activity = activity;
         this.v = v;
         this.type = type;
         key = activity.getString(R.string.type_mod);
+        sources.add(activity.getResources().getStringArray(R.array.resources));
+        sources.add(activity.getResources().getStringArray(R.array.current_array));
+        sources.add(activity.getResources().getStringArray(R.array.describe_array));
     }
 
     public void apply(){
         modify(collect((ViewGroup)v));
     }
 
-    private void findString(String text){
-        Field[] fields = R.string.class.getFields();
-        String[] allDrawablesNames = new String[fields.length];
-        for (int  i =0; i < fields.length; i++) {
-            //allDrawablesNames[i] = fields[i].get;
-        }
-    }
     private int getTypeIndex(String type){
         for(int i = 0; i < types.length; i++){
             if(type.equalsIgnoreCase(types[i]))
@@ -68,7 +68,13 @@ public class ViewManager {
     private void modify(ArrayList<View> views){
         for(View view : views){
             if(view instanceof TextView){
-                ((TextView)view).setText(((TextView)view).getText().toString().replace("hs", type));
+                for(int i = 0; i < sources.size(); i++){
+                    for(String s : sources.get(i)){
+                        if(((TextView)view).getText().toString().equalsIgnoreCase(s)){
+                            ((TextView)view).setText(sources.get(i)[getTypeIndex(type)]);
+                        }
+                    }
+                }
             }
             else if(view instanceof ImageView){
                 ((ImageView)view).setImageResource(Icon.values()[getTypeIndex(type)].val);

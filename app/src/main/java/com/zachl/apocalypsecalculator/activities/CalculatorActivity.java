@@ -19,18 +19,12 @@ import java.util.ArrayList;
 
 import static android.view.MotionEvent.INVALID_POINTER_ID;
 
-public class CalculatorActivity extends ManagedActivity implements Updating {
+public class CalculatorActivity extends ManagedActivity{
     public static final String EXTRA_SUFF = ".ANSWER.";
     public static final String EXTRA_PERCENT = ".ANSWER.PERCENT";
     private int[] answerViews;
 
-    private ArrayList<ArrayList<Integer>> sources = new ArrayList<>();
-    private ArrayList<Integer> views = new ArrayList<>();
-    private ArrayList<Integer> colorViews = new ArrayList<>();
-    private ArrayList<Integer> colors = new ArrayList<>();
-    private View[] options;
-    private View f1, f2, f3, icon, slider;
-    private int[] iconSrces;
+    private View icon, slider;
     private TextView percent;
     private float percentValue = 100;
     private ConstraintLayout ui;
@@ -48,36 +42,11 @@ public class CalculatorActivity extends ManagedActivity implements Updating {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-        /*sources.add(new ArrayList<Integer>());
-        sources.add(new ArrayList<Integer>());
-        sources.get(1).add(R.string.resource_1);
-        sources.get(1).add(R.string.dir_3_tp);
-        sources.get(1).add(R.string.dir_5_tp);
-        sources.add(new ArrayList<Integer>());
-        sources.get(2).add(R.string.resource_3);
-        sources.get(2).add(R.string.dir_3_wb);
-        sources.get(2).add(R.string.dir_5_wb);
-
-        views.add(R.id.subtitle);
-        views.add(R.id.prompt3);
-        views.add(R.id.prompt5);*/
-
         Intent intent = getIntent();
         type = intent.getStringExtra(MainActivity.EXTRA);
 
         icon = findViewById(R.id.icon);
         build((View)icon.getParent(), type);
-        /*iconSrces = new int[]{R.drawable.hs_icon, R.drawable.tp_icon, R.drawable.wb_icon};
-        if(!type.equalsIgnoreCase("hs")) {
-            typeI++;
-            if (type.equalsIgnoreCase("wb"))
-                typeI++;
-        }
-            for(int i = 0; i < sources.get(typeI).size(); i++){
-                ((TextView)findViewById(views.get(i))).setText(getString(sources.get(typeI).get(i)));
-            }
-            ((ImageView)icon).setImageResource(iconSrces[typeI]);*/
-
 
         percent = findViewById(R.id.percent);
         slider = findViewById(R.id.slider);
@@ -151,79 +120,20 @@ public class CalculatorActivity extends ManagedActivity implements Updating {
         });
 
         ui = findViewById(R.id.ui);
-        /*f1 = findViewById(R.id.info1);
-        f2 = findViewById(R.id.info2);
-        f3 = findViewById(R.id.info3);
-
-        f1.setOnTouchListener(buttonL);
-        f2.setOnTouchListener(buttonL);
-        f3.setOnTouchListener(buttonL);
-
-        View b1 = findViewById(R.id.option1);
-        View b2 = findViewById(R.id.option2);
-        View b3 = findViewById(R.id.option3);
-        options = new View[]{b1, b2, b3};
-
-        calcSrces = new int[]{R.drawable.calculate, R.drawable.calculate_d};
-        optionSrces = new int[][]{{R.drawable.tp_button1u, R.drawable.tp_button1d},
-                {R.drawable.tp_button2u, R.drawable.tp_button2d}, {R.drawable.tp_button3u, R.drawable.tp_button3d}};*/
         answerViews = new int[]{R.id.text1, R.id.text2, R.id.text3};
     }
 
-    /*public void expand(View view, float target, float scaleIncr){
-        if(updateR != null && updateR.running()){
-            updateR.end();
-        }
-        updateR = new UpdateRunnable(this);
-        updateR.start(view);
-        this.scaleIncr = scaleIncr;
-        this.target = target;
-    }*/
-    @Override
-    public void update(View view) {
-        /*if(view.getScaleY() > target + 0.05f || view.getScaleY() < target - 0.05f){
-            view.setScaleY(view.getScaleY() + scaleIncr);
-            view.setScaleX(view.getScaleX() + scaleIncr);
-        }
-        else{
-            updateR.end();
-            if(target > 1)
-                trigger(view);
-        }*/
-    }
-
-    public void trigger(View view){
-        //POP-UP
-        view.setScaleY(1);
-        view.setScaleX(1);
-    }
-
     public void changeImage(View view){
-        switch(view.getId()) {
-            case R.id.calc:
-                Intent intent = new Intent(getApplicationContext(), ResultsActivity.class);
-                intent.putExtra(MainActivity.EXTRA, type);
-                int[] answers = new int[3];
-                for(int i = 0; i < answers.length; i++){
-                        answers[i] = Integer.valueOf(((TextView) findViewById(answerViews[i])).getText().toString());
-                    if(answers[i] > 0) {
-                        intent.putExtra(MainActivity.EXTRA + EXTRA_SUFF + i, "" + answers[i]);
-                        Log.i("Answer", "" + answers[i]);
-                    }
-                    intent.putExtra(MainActivity.EXTRA + EXTRA_PERCENT, "" + percentValue);
-                }
-                startActivity(intent);
-                break;
-            default:
-                for (int i = 0; i < options.length; i++) {
-                    ((ImageView) options[i]).setImageResource(optionSrces[i][optionsI[1]]);
-                }
-                int pos = Integer.valueOf(view.getTag().toString());
-                if (optionsI[pos] == 1)
-                    optionsI[pos] = -1;
-                optionsI[pos]++;
-                ((ImageView) view).setImageResource(optionSrces[pos][optionsI[pos]]);
-                break;
+        Intent intent = new Intent(getApplicationContext(), ResultsActivity.class);
+        intent.putExtra(MainActivity.EXTRA, type);
+        int[] answers = new int[3];
+        for(int i = 0; i < answers.length; i++){
+            answers[i] = Integer.valueOf(((TextView) findViewById(answerViews[i])).getText().toString());
+            if(answers[i] > 0) {
+                intent.putExtra(MainActivity.EXTRA + EXTRA_SUFF + i, "" + answers[i]);
+            }
+            intent.putExtra(MainActivity.EXTRA + EXTRA_PERCENT, "" + percentValue);
         }
+        startActivity(intent);
     }
 }
