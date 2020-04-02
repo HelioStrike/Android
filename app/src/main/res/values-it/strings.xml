@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="calc">Calcolare</string>
+    <string name="coming_soon">Altre risorse in arrivo.</string>
+    <string name="description_1">Non fatevi prendere dal panico!</string>
+    <string name="description_2_1">Calcola le tue apocalisse</string>
+    <string name="description_2_2">Calcola le tue isteria di massa</string>
+    <string name="description_2_3">Calcola le tue panico globale</string>
+    <string name="description_2_4">Calcola le tue fine dei tempi</string>
+    <string name="description_3">esigenze per risorse come:</string>
+    <string name="dir_1">1. Compila le seguenti informazioni</string>
+    <string name="dir_2">Giorni fino alla fine della quarantena:</string>
+    <string name="dir_4">Conteggio delle persone messe in quarantena con te:</string>
+    <string name="hint_1">Giorni</string>
+    <string name="hint_2">Quantità</string>
+    <string name="resource_1">Carta igienica</string>
+    <string name="resource_2">Disinfettante per le mani</string>
+    <string name="resource_3">Bottiglie d\'acqua</string>
+    <string name="result_1">"La tua fornitura durerà "</string>
+    <string name="result_2">giorni,</string>
+    <string name="results_conclusion_neg">In bocca al lupo</string>
+    <string name="results_conclusion_pos">Congratulazioni</string>
+</resources>

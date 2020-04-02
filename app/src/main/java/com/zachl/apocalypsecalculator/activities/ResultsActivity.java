@@ -14,26 +14,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zachl.apocalypsecalculator.R;
+import com.zachl.apocalypsecalculator.entities.managers.ColorManager;
+import com.zachl.apocalypsecalculator.entities.managers.HazardManager;
+import com.zachl.apocalypsecalculator.entities.math.Function;
 import com.zachl.apocalypsecalculator.entities.runnables.Buffer;
 import com.zachl.apocalypsecalculator.entities.runnables.BufferRunnable;
 import com.zachl.apocalypsecalculator.entities.runnables.UpdateRunnable;
 import com.zachl.apocalypsecalculator.entities.runnables.Updating;
 import com.zachl.apocalypsecalculator.entities.wrappers.ManagedActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class ResultsActivity extends ManagedActivity implements Updating {
-    private int[] answers = new int[3];
+    private int[] answers = new int[4];
     private String type;
-    //private Function.Eq eq = Function.Eq.Tp;
-    private float[] results;
+    private Function.Multiplier eq;
+    private double[] results;
     private UpdateRunnable updateR;
     private View[] calcs = new View[3];
     private ConstraintLayout ui;
-    private int resultI;
+    private int resultI = 0;
     private int headerBuffer = 5;
     private int textBuffer = 8;
     private View icon;
+    BufferRunnable buffer2;
+
+    private ArrayList<TextView> hazardText = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,21 +51,27 @@ public class ResultsActivity extends ManagedActivity implements Updating {
         Intent intent = getIntent();
         type = intent.getStringExtra(MainActivity.EXTRA);
         icon = findViewById(R.id.icon2);
-        build((View)icon.getParent(), type);
-        for(int i = 0; i < answers.length; i++){
+        build((View)icon.getParent(), type, Package.Default);
+        for(int i = 0; i < answers.length - 1; i++){
             answers[i] = Integer.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_SUFF + i));
         }
+        answers[3] = (Float.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_PERCENT))).intValue();
 
-        /*switch(type){
+        switch(type){
+            case "hs":
+                eq = Function.Multiplier.HS;
+                break;
             case "tp":
-                eq = Function.Eq.Hs_Days;
+                eq = Function.Multiplier.TP;
                 break;
             case "wb":
-                eq = Function.Eq.Wb_Days;
+                eq = Function.Multiplier.WB;
                 break;
         }
         Function function = new Function(answers);
-        results = function.apply(eq);*/
+        results = function.apply(eq);
+        buildManager((View) icon.getParent(), type, HazardManager.class, results[1]);
+        results[1] = Math.abs(results[1]);
 
         calcs[0] = findViewById(R.id.results1);
         calcs[1] = findViewById(R.id.results2);
@@ -76,7 +90,7 @@ public class ResultsActivity extends ManagedActivity implements Updating {
         }, headerBuffer);
         buffer.start();
 
-        BufferRunnable buffer2 = new BufferRunnable(new Buffer() {
+       buffer2 = new BufferRunnable(new Buffer() {
             @Override
             public void wake() {
                 textChange();
@@ -96,12 +110,13 @@ public class ResultsActivity extends ManagedActivity implements Updating {
         constraintSet.applyTo(ui);
     }
     public void textChange(){
+        buffer2.end();
         updateR = new UpdateRunnable(this, 50);
         updateR.start(calcs[resultI]);
     }
     @Override
     public void update(View view) {
-        if(Integer.valueOf(((TextView)view).getText().toString()) < answers[resultI]){
+        if(Integer.valueOf(((TextView)view).getText().toString()) < results[resultI]){
             final View fview = view;
             runOnUiThread(new Runnable() {
                 @Override
@@ -112,6 +127,7 @@ public class ResultsActivity extends ManagedActivity implements Updating {
         }
         else{
             updateR.end();
+            ((TextView)view).setText("" + (int)results[resultI]);
             if(resultI < 1) {
                 resultI++;
                 textChange();

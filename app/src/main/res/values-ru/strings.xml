@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="calc">Подсчитать</string>
+    <string name="coming_soon">Больше ресурсов скоро</string>
+    <string name="description_1">Не паникуйте</string>
+    <string name="description_2_1">Рассчитайте свои потребности на случай апокалипсиса</string>
+    <string name="description_2_2">Рассчитайте свои потребности на случай массовой истерии</string>
+    <string name="description_2_3">Рассчитайте свои потребности на случай глобальной паники</string>
+    <string name="description_2_4">Рассчитайте свои потребности на случай конца света</string>
+    <string name="description_3">для таких ресурсов, как:</string>
+    <string name="dir_1">1. Заполните следующую информацию</string>
+    <string name="dir_2">Сколько дней осталось до конца вашего карантина</string>
+    <string name="dir_4">Количество лиц, находящихся с вами на карантине</string>
+    <string name="hint_1">День / Дней</string>
+    <string name="hint_2">Количество</string>
+    <string name="resource_1">Туалетная бумага</string>
+    <string name="resource_2">Aнтисептик для рук</string>
+    <string name="resource_3">Бутылки с водой</string>
+    <string name="result_1">"Вашего запаса хватит на "</string>
+    <string name="result_2">дней</string>
+</resources>

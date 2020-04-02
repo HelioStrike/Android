@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="calc">Calcule</string>
+    <string name="coming_soon">Más recursos pronto.</string>
+    <string name="description_1">No se asuste</string>
+    <string name="description_2_1">"Calcule sus apocalipsis "</string>
+    <string name="description_2_2">"Calcule sus histeria colectiva "</string>
+    <string name="description_2_3">Calcule sus pánico global</string>
+    <string name="description_2_4">"Calcule sus fin de los tiempos "</string>
+    <string name="description_3">necesidades de recursos como:</string>
+    <string name="dir_1">1. Complete la siguiente información</string>
+    <string name="dir_2">Días hasta el final de la cuarentena</string>
+    <string name="hint_2">Cantidad</string>
+    <string name="resource_1">Papel higienico</string>
+    <string name="resource_2">Disinfectante de manos</string>
+    <string name="resource_3">Botellas de agua</string>
+    <string name="result_1">Su suministro durará</string>
+    <string name="hint_1">Días</string>
+    <string name="result_2">días,</string>
+    <string name="results_conclusion_neg">Buena suerte.</string>
+    <string name="results_conclusion_pos">Felicidades</string>
+    <string name="dir_4">Cuenta de personas en cuarentena con usted:</string>
+</resources>

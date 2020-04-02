@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="calc">计算</string>
+    <string name="coming_soon">更多资源添加中</string>
+    <string name="description_1">请勿恐慌</string>
+    <string name="description_2_1">计算您如下资源的需求：末日劫难</string>
+    <string name="description_2_2">计算您如下资源的需求：群体惊慌</string>
+    <string name="description_2_3">计算您如下资源的需求：全球性恐慌</string>
+    <string name="description_2_4">计算您如下资源的需求：时代终结</string>
+    <string name="description_3">HELPHELPHELP</string>
+    <string name="dir_1">请输入以下信息</string>
+    <string name="dir_2">隔离终止还剩___天</string>
+    <string name="dir_4">共同隔离人数</string>
+    <string name="hint_1">天</string>
+    <string name="hint_2">数量</string>
+    <string name="resource_1">卫生纸</string>
+    <string name="resource_3">矿泉水</string>
+    <string name="resource_2">洗手液</string>
+    <string name="result_1">您的储存物资将持续</string>
+    <string name="result_2">天</string>
+    <string name="results_conclusion_neg">祝您好运</string>
+    <string name="results_conclusion_pos">恭喜您</string>
+</resources>

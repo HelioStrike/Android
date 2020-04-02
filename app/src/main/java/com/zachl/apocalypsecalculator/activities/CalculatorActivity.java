@@ -35,7 +35,7 @@ public class CalculatorActivity extends ManagedActivity{
     private int[] optionsI = {0,0,0};
     private String type;
 
-    private float mLastTouchX, mLastTouchY, mPosX;
+    private float mLastTouchX, mPosX;
     private int mActivePointerId;
 
     @Override
@@ -46,7 +46,7 @@ public class CalculatorActivity extends ManagedActivity{
         type = intent.getStringExtra(MainActivity.EXTRA);
 
         icon = findViewById(R.id.icon);
-        build((View)icon.getParent(), type);
+        build((View)icon.getParent(), type, Package.Default);
 
         percent = findViewById(R.id.percent);
         slider = findViewById(R.id.slider);

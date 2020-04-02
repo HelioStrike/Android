@@ -18,16 +18,15 @@
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/results2"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/results2" />
 
     <ImageView
         android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="550dp"
+        android:layout_marginBottom="760dp"
         android:background="@drawable/results_header"
-        android:contentDescription="@string/color_mod"
+        android:contentDescription="hazard @string/color_mod"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,8 +61,7 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icon"
-        app:layout_constraintTop_toBottomOf="@+id/title2"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/title2" />
 
     <ImageView
         android:id="@+id/icon2"
@@ -75,8 +73,7 @@
         app:layout_constraintEnd_toStartOf="@+id/subtitle2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title2"
-        app:srcCompat="@drawable/hs_icon"
-        tools:visibility="invisible" />
+        app:srcCompat="@drawable/hs_icon" />
 
     <TextView
         android:id="@+id/text1"
@@ -84,35 +81,35 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="96dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/quicksand_bold"
         android:text="@string/result_1"
         android:textColor="@color/colorBack1"
         android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/results1"
         app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toBottomOf="@+id/subtitle2"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/subtitle2" />
 
     <TextView
         android:id="@+id/results1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="81dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="76dp"
-        android:layout_marginEnd="120dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/quicksand_bold"
         android:text="0"
+        android:textAlignment="center"
         android:textColor="@color/colorBack1"
         android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/text2"
         app:layout_constraintStart_toEndOf="@+id/text1"
-        app:layout_constraintTop_toBottomOf="@+id/subtitle2"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/subtitle2" />
 
     <TextView
         android:id="@+id/text2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="48dp"
         android:fontFamily="@font/quicksand_bold"
         android:text="@string/result_2"
@@ -120,93 +117,79 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/results1"
-        app:layout_constraintTop_toTopOf="@+id/text1"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toTopOf="@+id/text1" />
 
     <TextView
         android:id="@+id/text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/hazard_mod"
         android:fontFamily="@font/quicksand_bold"
-        android:text="@string/result_3_neg"
+        android:text="@string/result_3_pos"
         android:textColor="@color/colorBack1"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/results2"
         app:layout_constraintStart_toStartOf="@+id/text1"
-        app:layout_constraintTop_toBottomOf="@+id/text1"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/text1" />
 
     <TextView
         android:id="@+id/results2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="81dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/quicksand_bold"
         android:text="0"
+        android:textAlignment="center"
         android:textColor="@color/colorBack1"
         android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@+id/text4"
         app:layout_constraintStart_toEndOf="@+id/text3"
-        app:layout_constraintTop_toBottomOf="@+id/results1"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/results1" />
 
     <TextView
         android:id="@+id/text4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="72dp"
+        android:contentDescription="@string/hazard_mod"
         android:fontFamily="@font/quicksand_bold"
-        android:text="@string/result_3_neg_2"
+        android:text="@string/result_3_pos_2"
         android:textColor="@color/colorBack1"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/results2"
-        app:layout_constraintTop_toBottomOf="@+id/text2"
-        tools:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/text5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/result_3_neg_3"
-        android:textColor="@color/colorBack1"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/text3"
-        app:layout_constraintTop_toBottomOf="@+id/text3"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/text2" />
 
     <TextView
         android:id="@+id/text6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/hazard_mod"
         android:fontFamily="@font/quicksand_bold"
-        android:text="@string/results_conclusion_neg"
+        android:text="@string/results_conclusion_pos"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/text1"
-        app:layout_constraintTop_toBottomOf="@+id/text8"
-        tools:visibility="invisible" />
+        app:layout_constraintEnd_toEndOf="@+id/text8"
+        app:layout_constraintStart_toStartOf="@+id/text8"
+        app:layout_constraintTop_toBottomOf="@+id/text8" />
 
     <ImageButton
         android:id="@+id/home"
         android:layout_width="203dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/back_button"
         android:contentDescription="@string/color_mod"
         android:onClick="goHome"
         android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header"
         app:srcCompat="@drawable/back_button" />
 
     <TextView
@@ -228,13 +211,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:contentDescription="@string/type_mod"
+        android:contentDescription="@string/hazard_mod"
         android:fontFamily="@font/quicksand_bold"
-        android:text="@string/resource_2"
+        android:text="@string/result_3_pos_3"
         android:textColor="@color/colorBack1"
-        android:textSize="36sp"
+        android:textSize="24sp"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/text3"
-        app:layout_constraintTop_toBottomOf="@+id/text4"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@+id/text4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
