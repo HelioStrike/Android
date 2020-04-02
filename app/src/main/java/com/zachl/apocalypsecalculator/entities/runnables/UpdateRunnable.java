@@ -4,6 +4,8 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.zachl.apocalypsecalculator.entities.runnables.interfaces.Updating;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

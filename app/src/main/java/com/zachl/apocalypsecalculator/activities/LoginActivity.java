@@ -2,27 +2,24 @@ package com.zachl.apocalypsecalculator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.TransitionManager;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.zachl.apocalypsecalculator.R;
-import com.zachl.apocalypsecalculator.entities.runnables.Buffer;
+import com.zachl.apocalypsecalculator.entities.runnables.interfaces.Buffer;
 import com.zachl.apocalypsecalculator.entities.runnables.BufferRunnable;
 import com.zachl.apocalypsecalculator.entities.runnables.UpdateRunnable;
-import com.zachl.apocalypsecalculator.entities.runnables.Updating;
+import com.zachl.apocalypsecalculator.entities.runnables.interfaces.Updating;
 
 public class LoginActivity extends AppCompatActivity implements Updating {
     View logo;
     TextView email;
     ConstraintLayout ui;
     UpdateRunnable updateR;
-    float target, inc;
+    float target, inc, tempScale;
     String id;
     boolean initd = false;
     Intent intent = null;
@@ -35,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements Updating {
         BufferRunnable bufferR = new BufferRunnable(new Buffer() {
             @Override
             public void wake() {
-                expand(logo, 1.4f, 0.01f);
+                expand(logo, 1.3f, 0.01f);
             }
         }, 4);
         bufferR.start();
@@ -50,13 +47,15 @@ public class LoginActivity extends AppCompatActivity implements Updating {
         this.inc = inc;
         updateR = new UpdateRunnable(this, 20);
         updateR.start(view);
+        tempScale = view.getScaleY();
     }
 
     @Override
     public void update(View view) {
-        if(view.getScaleX() < target - 0.2 || view.getScaleX() > target + 0.2){
-            view.setScaleX(view.getScaleX() + inc);
-            view.setScaleY(view.getScaleY() + inc);
+        if(tempScale < target - 0.02 || tempScale > target + 0.02){
+            tempScale += inc;
+            view.setScaleY(tempScale);
+            view.setScaleX(tempScale);
         }
         else{
             updateR.end();

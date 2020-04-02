@@ -168,10 +168,10 @@
         android:id="@+id/percent_hint1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:contentDescription="@string/type_mod"
         android:fontFamily="@font/quicksand_bold"
         android:text="@string/slider_1"
-        android:textSize="19sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/rail"
         app:layout_constraintTop_toBottomOf="@+id/rail" />
 
@@ -179,10 +179,10 @@
         android:id="@+id/percent_hint2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:contentDescription="@string/type_mod"
         android:fontFamily="@font/quicksand_bold"
         android:text="@string/slider_2"
-        android:textSize="19sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/rail"
         app:layout_constraintTop_toBottomOf="@+id/rail" />
 

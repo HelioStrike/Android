@@ -1,5 +1,7 @@
 package com.zachl.apocalypsecalculator.entities.runnables;
 
+import com.zachl.apocalypsecalculator.entities.runnables.interfaces.Buffer;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

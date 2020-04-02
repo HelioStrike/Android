@@ -1,4 +1,4 @@
-package com.zachl.apocalypsecalculator.entities.runnables;
+package com.zachl.apocalypsecalculator.entities.runnables.interfaces;
 
 import android.view.View;
 

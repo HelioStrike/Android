@@ -2,20 +2,16 @@ package com.zachl.apocalypsecalculator.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.MotionEventCompat;
 
 import com.zachl.apocalypsecalculator.R;
-import com.zachl.apocalypsecalculator.entities.runnables.Updating;
 import com.zachl.apocalypsecalculator.entities.wrappers.ManagedActivity;
-
-import java.util.ArrayList;
 
 import static android.view.MotionEvent.INVALID_POINTER_ID;
 
@@ -128,12 +124,26 @@ public class CalculatorActivity extends ManagedActivity{
         intent.putExtra(MainActivity.EXTRA, type);
         int[] answers = new int[3];
         for(int i = 0; i < answers.length; i++){
-            answers[i] = Integer.valueOf(((TextView) findViewById(answerViews[i])).getText().toString());
+            try {
+                answers[i] = Integer.valueOf(((TextView) findViewById(answerViews[i])).getText().toString());
+            }
+            catch(NumberFormatException e){
+                cancelStart();
+                return;
+            }
             if(answers[i] > 0) {
                 intent.putExtra(MainActivity.EXTRA + EXTRA_SUFF + i, "" + answers[i]);
+            }
+            else{
+                cancelStart();
+                return;
             }
             intent.putExtra(MainActivity.EXTRA + EXTRA_PERCENT, "" + percentValue);
         }
         startActivity(intent);
+    }
+
+    public void cancelStart(){
+        Toast.makeText(getApplicationContext(), "Please fill out every required field", Toast.LENGTH_SHORT).show();
     }
 }

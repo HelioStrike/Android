@@ -33,6 +33,8 @@ public class ViewManager extends Manager{
         sources.add(activity.getResources().getStringArray(R.array.resources));
         sources.add(activity.getResources().getStringArray(R.array.current_array));
         sources.add(activity.getResources().getStringArray(R.array.describe_array));
+        sources.add(activity.getResources().getStringArray(R.array.resource_hints_1));
+        sources.add(activity.getResources().getStringArray(R.array.resource_hints_2));
     }
 
     @Override

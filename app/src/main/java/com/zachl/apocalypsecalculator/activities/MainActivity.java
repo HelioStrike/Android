@@ -13,11 +13,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.zachl.apocalypsecalculator.R;
-import com.zachl.apocalypsecalculator.activities.CalculatorActivity;
-import com.zachl.apocalypsecalculator.entities.runnables.Buffer;
+import com.zachl.apocalypsecalculator.entities.runnables.interfaces.Buffer;
 import com.zachl.apocalypsecalculator.entities.runnables.BufferRunnable;
 import com.zachl.apocalypsecalculator.entities.runnables.UpdateRunnable;
-import com.zachl.apocalypsecalculator.entities.runnables.Updating;
+import com.zachl.apocalypsecalculator.entities.runnables.interfaces.Updating;
 
 public class MainActivity extends AppCompatActivity implements Updating {
     /**

@@ -1,29 +1,22 @@
 package com.zachl.apocalypsecalculator.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.TransitionManager;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zachl.apocalypsecalculator.R;
-import com.zachl.apocalypsecalculator.entities.managers.ColorManager;
 import com.zachl.apocalypsecalculator.entities.managers.HazardManager;
 import com.zachl.apocalypsecalculator.entities.math.Function;
-import com.zachl.apocalypsecalculator.entities.runnables.Buffer;
+import com.zachl.apocalypsecalculator.entities.runnables.interfaces.Buffer;
 import com.zachl.apocalypsecalculator.entities.runnables.BufferRunnable;
 import com.zachl.apocalypsecalculator.entities.runnables.UpdateRunnable;
-import com.zachl.apocalypsecalculator.entities.runnables.Updating;
+import com.zachl.apocalypsecalculator.entities.runnables.interfaces.Updating;
 import com.zachl.apocalypsecalculator.entities.wrappers.ManagedActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
