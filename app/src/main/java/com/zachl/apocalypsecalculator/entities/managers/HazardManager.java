@@ -11,6 +11,8 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.zachl.apocalypsecalculator.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class HazardManager extends Manager {
@@ -38,7 +40,15 @@ public class HazardManager extends Manager {
             if(view instanceof TextView){
                     for(int i = 0; i < sources.size(); i++){
                         for(String s : sources.get(i)){
-                            if(((TextView)view).getText().toString().equalsIgnoreCase(s)){
+                            if(((TextView)view).getText().toString().equalsIgnoreCase(s) && s.equalsIgnoreCase(sources.get(3)[0])){
+                                if(positive == 1){
+                                    ((TextView)view).setText(sources.get(3)[1] + " " + resources[getTypeIndex(type)] + "!");
+                                }
+                                else{
+                                    ((TextView)view).setText(s);
+                                }
+                            }
+                            else if(((TextView)view).getText().toString().equalsIgnoreCase(s)){
                                 ((TextView)view).setText(sources.get(i)[positive]);
                             }
                         }

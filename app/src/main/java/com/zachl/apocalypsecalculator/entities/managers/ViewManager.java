@@ -32,9 +32,11 @@ public class ViewManager extends Manager{
         super(activity, v, type, R.string.type_mod);
         sources.add(activity.getResources().getStringArray(R.array.resources));
         sources.add(activity.getResources().getStringArray(R.array.current_array));
-        sources.add(activity.getResources().getStringArray(R.array.describe_array));
         sources.add(activity.getResources().getStringArray(R.array.resource_hints_1));
         sources.add(activity.getResources().getStringArray(R.array.resource_hints_2));
+        sources.add(activity.getResources().getStringArray(R.array.sizes1));
+        sources.add(activity.getResources().getStringArray(R.array.sizes2));
+        sources.add(activity.getResources().getStringArray(R.array.sizes3));
     }
 
     @Override
@@ -44,7 +46,7 @@ public class ViewManager extends Manager{
                 for(int i = 0; i < sources.size(); i++){
                     for(String s : sources.get(i)){
                         if(((TextView)view).getText().toString().equalsIgnoreCase(s)){
-                            ((TextView)view).setText(sources.get(i)[getTypeIndex(type)]);
+                            ((TextView) view).setText(sources.get(i)[getTypeIndex(type)]);
                         }
                     }
                 }

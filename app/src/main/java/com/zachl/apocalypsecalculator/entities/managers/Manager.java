@@ -30,7 +30,7 @@ public abstract class Manager {
         modify(collect((ViewGroup)v));
     }
 
-    public int getTypeIndex(String type){
+    public static int getTypeIndex(String type){
         for(int i = 0; i < types.length; i++){
             if(type.equalsIgnoreCase(types[i]))
                 return i;

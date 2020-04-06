@@ -21,7 +21,7 @@ import com.zachl.apocalypsecalculator.entities.wrappers.ManagedActivity;
 import java.util.ArrayList;
 
 public class ResultsActivity extends ManagedActivity implements Updating {
-    private int[] answers = new int[4];
+    private int[] answers = new int[5];
     private String type;
     private Function.Multiplier eq;
     private double[] results;
@@ -34,8 +34,6 @@ public class ResultsActivity extends ManagedActivity implements Updating {
     private View icon;
     BufferRunnable buffer2;
 
-    private ArrayList<TextView> hazardText = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +43,11 @@ public class ResultsActivity extends ManagedActivity implements Updating {
         type = intent.getStringExtra(MainActivity.EXTRA);
         icon = findViewById(R.id.icon2);
         build((View)icon.getParent(), type, Package.Default);
-        for(int i = 0; i < answers.length - 1; i++){
+        for(int i = 0; i < answers.length - 2; i++){
             answers[i] = Integer.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_SUFF + i));
         }
         answers[3] = (Float.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_PERCENT))).intValue();
+        answers[4] = (Float.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_SIZE))).intValue();
 
         switch(type){
             case "hs":

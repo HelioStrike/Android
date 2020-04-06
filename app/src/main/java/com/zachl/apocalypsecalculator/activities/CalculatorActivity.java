@@ -1,33 +1,42 @@
 package com.zachl.apocalypsecalculator.activities;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.MotionEventCompat;
 
 import com.zachl.apocalypsecalculator.R;
+import com.zachl.apocalypsecalculator.entities.managers.ColorManager;
+import com.zachl.apocalypsecalculator.entities.managers.Manager;
 import com.zachl.apocalypsecalculator.entities.wrappers.ManagedActivity;
 
+import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.INVALID_POINTER_ID;
 
 public class CalculatorActivity extends ManagedActivity{
     public static final String EXTRA_SUFF = ".ANSWER.";
     public static final String EXTRA_PERCENT = ".ANSWER.PERCENT";
+    public static final String EXTRA_SIZE = ".ANSWER.SIZE";
     private int[] answerViews;
 
     private View icon, slider;
     private TextView percent;
     private float percentValue = 100;
     private ConstraintLayout ui;
-    private int[] sliderBounds = {70, 830};
+    private int[] sliderBounds = {42, 848};
 
     private int typeI = 0;
-    private int[][] optionSrces;
+    private ImageView[] options;
+    private TextView[] textOpts;
     private int[] optionsI = {0,0,0};
     private String type;
 
@@ -76,7 +85,7 @@ public class CalculatorActivity extends ManagedActivity{
                         if(v.getX() + mPosX > sliderBounds[0] && v.getX() + mPosX < sliderBounds[1]) {
                             v.setX(v.getX() + mPosX);
                             percent.setX(percent.getX() + mPosX);
-                            percentValue += mPosX / 15;
+                            percentValue += mPosX / 8;
                             percent.setText("" + (int)percentValue + "%");
                         }
 
@@ -115,8 +124,23 @@ public class CalculatorActivity extends ManagedActivity{
             }
         });
 
+        View.OnTouchListener optionL = new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == ACTION_DOWN){
+                    optionSelect(((ImageView)v));
+                }
+                return false;
+            }
+        };
         ui = findViewById(R.id.ui);
         answerViews = new int[]{R.id.text1, R.id.text2, R.id.text3};
+        options = new ImageView[]{findViewById(R.id.size_b1), findViewById(R.id.size_b2), findViewById(R.id.size_b3)};
+        textOpts = new TextView[]{findViewById(R.id.size1), findViewById(R.id.size2), findViewById(R.id.size3)};
+
+        for(View view : options){
+            view.setOnTouchListener(optionL);
+        }
     }
 
     public void changeImage(View view){
@@ -139,8 +163,31 @@ public class CalculatorActivity extends ManagedActivity{
                 return;
             }
             intent.putExtra(MainActivity.EXTRA + EXTRA_PERCENT, "" + percentValue);
+            intent.putExtra(MainActivity.EXTRA + EXTRA_SIZE, "" + typeI);
         }
         startActivity(intent);
+    }
+
+    public void optionSelect(ImageView view){
+        int i = 0;
+        for(ImageView iview : options){
+            iview.setImageResource(R.drawable.size_field);
+            if(iview== view) {
+                typeI = i;
+                break;
+            }
+            i++;
+        }
+        for(TextView tview : textOpts){
+            tview.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorBack2));
+        }
+        view.setImageResource(R.drawable.size_filled);
+        DrawableCompat.setTint(view.getDrawable(), ContextCompat.getColor(getApplicationContext(), ColorManager.Color.values()[Manager.getTypeIndex(type)].val));
+        for(int j = 0; j < options.length; j++){
+            if(j != i)
+                options[j].setImageResource(R.drawable.size_field);
+        }
+        textOpts[i].setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorBack1));
     }
 
     public void cancelStart(){

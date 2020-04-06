@@ -21,7 +21,7 @@ public class ColorManager extends Manager{
         MAIN(R.color.main),
         HAZARD(R.color.hazard);
 
-        int val;
+        public int val;
         Color(int val){
             this.val = val;
         }

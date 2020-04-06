@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements Updating {
 
     private boolean initd = false;
     private boolean triggered = false;
+    private BufferRunnable bufferR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,7 @@ public class MainActivity extends AppCompatActivity implements Updating {
         desc = findViewById(R.id.header);
         descT = findViewById(R.id.desc_2);
 
-        descSrces = new String[]{getString(R.string.description_2_1), getString(R.string.description_2_2), getString(R.string.description_2_3),
-                getString(R.string.description_2_4)};
+        descSrces = new String[]{getString(R.string.description_2_1), getString(R.string.description_2_2)};
         View.OnTouchListener buttonL = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements Updating {
                 }
                 else if(event.getAction() == MotionEvent.ACTION_UP || triggered){
                     expand(v, 1f, -0.01f);
+                    if(event.getAction() == MotionEvent.ACTION_UP)
+                        initd = false;
                     return true;
                 }
                 return false;
@@ -84,17 +86,37 @@ public class MainActivity extends AppCompatActivity implements Updating {
         }, headerBuffer);
         buffer.start();
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        initd = false;
+    }
+
     public void init(){
         ConstraintSet constraintSet = new ConstraintSet();
         constraintSet.load(this, R.layout.activity_main);
         TransitionManager.beginDelayedTransition(ui);
         constraintSet.applyTo(ui);
-        initd = true;
     }
 
-    public void expand(View view, float target, float scaleIncr){
+    public void expand(View view, final float target, float scaleIncr){
         if(updateR != null && updateR.running()){
             updateR.end();
+        }
+        final View fview = view;
+        if(bufferR == null) {
+            bufferR = new BufferRunnable(new Buffer() {
+                @Override
+                public void wake() {
+                    trigger(fview);
+                }
+            }, 1);
+            if(!initd)
+                bufferR.start();
+            else{
+                bufferR = null;
+            }
         }
         updateR = new UpdateRunnable(this);
         updateR.start(view);
@@ -111,9 +133,14 @@ public class MainActivity extends AppCompatActivity implements Updating {
                 descT.setText(descSrces[descI]);
                 break;
             default:
-                Intent intent = new Intent(getApplicationContext(), CalculatorActivity.class);
-                intent.putExtra(EXTRA, view.getContentDescription());
-                startActivity(intent);
+                if(!initd) {
+                    Intent intent = new Intent(getApplicationContext(), CalculatorActivity.class);
+                    intent.putExtra(EXTRA, view.getContentDescription());
+                    startActivity(intent);
+                    bufferR.end();
+                    bufferR = null;
+                    initd = true;
+                }
         }
     }
     @Override
@@ -124,18 +151,9 @@ public class MainActivity extends AppCompatActivity implements Updating {
             view.setScaleX(tempScale);
         } else {
             updateR.end();
-            if (target > 1) {
-                triggered = true;
-                final View fview = view;
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        trigger(fview);
-                    }
-                });
-            }
-            else{
+            if(target <= 1){
                 triggered = false;
+                initd = false;
             }
         }
     }

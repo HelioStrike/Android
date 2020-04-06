@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity implements Updating {
     String id;
     boolean initd = false;
     Intent intent = null;
+    private BufferRunnable buffer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +36,34 @@ public class LoginActivity extends AppCompatActivity implements Updating {
                 expand(logo, 1.3f, 0.01f);
             }
         }, 4);
-        bufferR.start();
+        //bufferR.start();
         ui = findViewById(R.id.ui);
         email = findViewById(R.id.email);
         //login = findViewById(R.id.login_button);
         //signup = findViewById(R.id.login_button);
+
+        buffer = new BufferRunnable(new Buffer() {
+            @Override
+            public void wake() {
+                startActivity();
+            }
+        }, 8);
+        buffer.start();
+    }
+    @Override
+    public void onRestart()
+    {  // After a pause OR at startup
+        super.onRestart();
+        //Refresh your stuff here
+        if(buffer == null){
+            buffer = new BufferRunnable(new Buffer() {
+                @Override
+                public void wake() {
+                    startActivity();
+                }
+            }, 8);
+            buffer.start();
+        }
     }
 
     public void expand(View view, float target, float inc){
@@ -69,11 +93,17 @@ public class LoginActivity extends AppCompatActivity implements Updating {
                 constraintSet.load(this, R.layout.activity_login);
                 TransitionManager.beginDelayedTransition(ui);
                 constraintSet.applyTo(ui);*/
-                if(intent == null) {
-                    intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
-                }
             }
+        }
+    }
+
+    public void startActivity(){
+        if(intent == null) {
+            intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            buffer.end();
+            buffer = null;
+            intent = null;
         }
     }
 }
