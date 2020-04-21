@@ -5,7 +5,8 @@
     android:id="@+id/ui"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LoginActivity">
+    tools:context=".activities.LoginActivity"
+    android:screenOrientation="portrait">
 
     <ImageView
         android:id="@+id/app_logo"

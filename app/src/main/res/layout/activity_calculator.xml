@@ -5,12 +5,364 @@
     android:id="@+id/ui"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:screenOrientation="portrait">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="0dp"
+        android:layout_height="503dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <LinearLayout
+            android:id="@+id/scroll_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/scroll_constraints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/percent_hint2"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="54dp"
+                    android:contentDescription="@string/type_mod"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/slider_2"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/rail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rail" />
+
+                <ImageButton
+                    android:id="@+id/calc"
+                    android:layout_width="143dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="134dp"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="134dp"
+                    android:background="@drawable/calc"
+                    android:contentDescription="@string/color_mod"
+                    android:onClick="changeImage"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/percent"
+                    app:srcCompat="@drawable/calc" />
+
+                <ImageButton
+                    android:id="@+id/size_b2"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/size_field"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/size_b1"
+                    app:layout_constraintStart_toEndOf="@+id/size_b1"
+                    app:layout_constraintTop_toTopOf="@+id/size_b1"
+                    app:srcCompat="@drawable/size_field" />
+
+                <TextView
+                    android:id="@+id/percent_hint1"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="54dp"
+                    android:contentDescription="@string/type_mod"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/slider_1"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/rail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rail" />
+
+                <ImageView
+                    android:id="@+id/field1"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prompt2"
+                    app:srcCompat="@drawable/main_field" />
+
+                <ImageView
+                    android:id="@+id/field2"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prompt3"
+                    app:srcCompat="@drawable/main_field" />
+
+                <ImageButton
+                    android:id="@+id/slider"
+                    style="@style/Widget.AppCompat.ImageButton"
+                    android:layout_width="78dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/slider"
+                    android:contentDescription="@string/color_mod"
+                    android:scaleType="fitXY"
+                    android:translationZ="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rail"
+                    app:srcCompat="@drawable/slider" />
+
+                <TextView
+                    android:id="@+id/percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="100%"
+                    android:textColor="@color/colorBack1"
+                    android:translationZ="1dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/rail"
+                    app:layout_constraintEnd_toEndOf="@+id/slider"
+                    app:layout_constraintStart_toStartOf="@+id/slider"
+                    app:layout_constraintTop_toTopOf="@+id/slider" />
+
+                <TextView
+                    android:id="@+id/prompt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand"
+                    android:text="@string/dir_2"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prompt1" />
+
+                <TextView
+                    android:id="@+id/calc_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/calc"
+                    android:textColor="@color/colorBack1"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/calc"
+                    app:layout_constraintEnd_toEndOf="@+id/calc"
+                    app:layout_constraintStart_toStartOf="@+id/calc"
+                    app:layout_constraintTop_toTopOf="@+id/calc" />
+
+                <ImageView
+                    android:id="@+id/rail"
+                    android:layout_width="336dp"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prompt5"
+                    app:srcCompat="@drawable/slide_rail" />
+
+                <EditText
+                    android:id="@+id/text3"
+                    android:layout_width="95dp"
+                    android:layout_height="30dp"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:fontFamily="@font/quicksand"
+                    android:hint="@string/hint_2"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/field3"
+                    app:layout_constraintEnd_toEndOf="@+id/field3"
+                    app:layout_constraintStart_toStartOf="@+id/field3"
+                    app:layout_constraintTop_toTopOf="@+id/field3" />
+
+                <ImageButton
+                    android:id="@+id/size_b3"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/size_field"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/size_b2"
+                    app:layout_constraintStart_toEndOf="@+id/size_b2"
+                    app:layout_constraintTop_toTopOf="@+id/size_b1"
+                    app:srcCompat="@drawable/size_field" />
+
+                <TextView
+                    android:id="@+id/size1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:contentDescription="@string/type_mod"
+                    android:fontFamily="@font/quicksand"
+                    android:text="Bottles"
+                    android:textColor="@color/colorBack2"
+                    android:textSize="12sp"
+                    android:translationZ="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/size_b1"
+                    app:layout_constraintStart_toStartOf="@+id/size_b1"
+                    app:layout_constraintTop_toTopOf="@+id/size_b1" />
+
+                <TextView
+                    android:id="@+id/size2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:contentDescription="@string/type_mod"
+                    android:fontFamily="@font/quicksand"
+                    android:text="oz"
+                    android:textColor="@color/colorBack2"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/size_b2"
+                    app:layout_constraintStart_toStartOf="@+id/size_b2"
+                    app:layout_constraintTop_toTopOf="@+id/size_b2" />
+
+                <TextView
+                    android:id="@+id/prompt5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/type_mod"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/dir_5_hs"
+                    android:textSize="19sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/field3" />
+
+                <TextView
+                    android:id="@+id/prompt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/type_mod"
+                    android:fontFamily="@font/quicksand"
+                    android:text="@string/dir_3_hs"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/field1" />
+
+                <TextView
+                    android:id="@+id/prompt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/dir_1"
+                    android:textSize="19sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/text2"
+                    android:layout_width="93dp"
+                    android:layout_height="34dp"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:fontFamily="@font/quicksand"
+                    android:hint="@string/hint_2"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/field2"
+                    app:layout_constraintEnd_toEndOf="@+id/field2"
+                    app:layout_constraintStart_toStartOf="@+id/field2"
+                    app:layout_constraintTop_toTopOf="@+id/field2" />
+
+                <ImageButton
+                    android:id="@+id/size_b1"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/size_field"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="@+id/field2"
+                    app:layout_constraintStart_toEndOf="@+id/field2"
+                    app:layout_constraintTop_toTopOf="@+id/field2"
+                    app:srcCompat="@drawable/size_field" />
+
+                <EditText
+                    android:id="@+id/text1"
+                    style="@style/Widget.AppCompat.AutoCompleteTextView"
+                    android:layout_width="122dp"
+                    android:layout_height="44dp"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:fontFamily="@font/quicksand"
+                    android:hint="@string/hint_1"
+                    android:inputType="number"
+                    android:singleLine="false"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    app:layout_constraintBottom_toBottomOf="@+id/field1"
+                    app:layout_constraintEnd_toEndOf="@+id/field1"
+                    app:layout_constraintStart_toStartOf="@+id/field1"
+                    app:layout_constraintTop_toTopOf="@+id/field1" />
+
+                <TextView
+                    android:id="@+id/prompt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand"
+                    android:text="@string/dir_4"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/field2" />
+
+                <ImageView
+                    android:id="@+id/field3"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/main_field"
+                    android:scaleType="fitXY"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prompt4"
+                    app:srcCompat="@drawable/main_field" />
+
+                <TextView
+                    android:id="@+id/size3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:contentDescription="@string/type_mod"
+                    android:fontFamily="@font/quicksand"
+                    android:text="mL"
+                    android:textColor="@color/colorBack2"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/size_b3"
+                    app:layout_constraintStart_toStartOf="@+id/size_b3"
+                    app:layout_constraintTop_toTopOf="@+id/size_b3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <ImageButton
         android:id="@+id/header"
-        android:layout_width="413dp"
-        android:layout_height="356dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginBottom="512dp"
         android:background="@drawable/hs_header"
         android:contentDescription="@string/color_mod"
@@ -19,6 +371,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/hs_header" />
 
     <TextView
@@ -26,7 +379,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:text="@string/title"
         android:textColor="@color/colorBack1"
@@ -36,347 +389,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/field1"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prompt2"
-        app:srcCompat="@drawable/main_field" />
-
-    <TextView
-        android:id="@+id/prompt1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/dir_1"
-        android:textSize="19sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subtitle" />
-
-    <TextView
-        android:id="@+id/prompt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/quicksand"
-        android:text="@string/dir_2"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/field1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prompt1" />
-
-    <TextView
-        android:id="@+id/prompt3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:contentDescription="@string/type_mod"
-        android:fontFamily="@font/quicksand"
-        android:text="@string/dir_3_hs"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/field1" />
-
-    <ImageView
-        android:id="@+id/field2"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prompt3"
-        app:srcCompat="@drawable/main_field" />
-
-    <TextView
-        android:id="@+id/prompt4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/quicksand"
-        android:text="@string/dir_4"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/field2" />
-
-    <ImageView
-        android:id="@+id/field3"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/main_field"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prompt4"
-        app:srcCompat="@drawable/main_field" />
-
-    <TextView
-        android:id="@+id/prompt5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/type_mod"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/dir_5_hs"
-        android:textSize="19sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/field3" />
-
-    <ImageView
-        android:id="@+id/rail"
-        android:layout_width="336dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="56dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prompt5"
-        app:srcCompat="@drawable/slide_rail" />
-
-    <ImageButton
-        android:id="@+id/slider"
-        android:layout_width="78dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/slider"
-        android:contentDescription="@string/color_mod"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="@+id/rail"
-        app:layout_constraintStart_toStartOf="@+id/rail"
-        app:layout_constraintTop_toTopOf="@+id/rail"
-        app:srcCompat="@drawable/slider" />
-
-    <TextView
-        android:id="@+id/percent_hint1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/type_mod"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/slider_1"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/rail"
-        app:layout_constraintTop_toBottomOf="@+id/rail" />
-
-    <TextView
-        android:id="@+id/percent_hint2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/type_mod"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/slider_2"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/rail"
-        app:layout_constraintTop_toBottomOf="@+id/rail" />
-
-    <ImageButton
-        android:id="@+id/calc"
-        android:layout_width="143dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/calc"
-        android:contentDescription="@string/color_mod"
-        android:onClick="changeImage"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rail"
-        app:srcCompat="@drawable/calc" />
-
-    <TextView
-        android:id="@+id/percent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="2dp"
-        android:fontFamily="@font/quicksand_light"
-        android:text="100%"
-        android:textColor="@color/colorBack1"
-        app:layout_constraintBottom_toBottomOf="@+id/slider"
-        app:layout_constraintEnd_toEndOf="@+id/slider"
-        app:layout_constraintStart_toStartOf="@+id/slider" />
-
-    <TextView
-        android:id="@+id/calc_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:fontFamily="@font/quicksand_bold"
-        android:text="@string/calc"
-        android:textColor="@color/colorBack1"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/calc"
-        app:layout_constraintEnd_toEndOf="@+id/calc"
-        app:layout_constraintStart_toStartOf="@+id/calc" />
-
-    <EditText
-        android:id="@+id/text1"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="122dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="4dp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:fontFamily="@font/quicksand"
-        android:hint="@string/hint_1"
-        android:inputType="number"
-        android:singleLine="false"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/field1"
-        app:layout_constraintEnd_toEndOf="@+id/field1"
-        app:layout_constraintStart_toStartOf="@+id/field1"
-        app:layout_constraintTop_toTopOf="@+id/field1" />
-
-    <EditText
-        android:id="@+id/text2"
-        android:layout_width="93dp"
-        android:layout_height="34dp"
-        android:layout_marginBottom="4dp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:fontFamily="@font/quicksand"
-        android:hint="@string/hint_2"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/field2"
-        app:layout_constraintEnd_toEndOf="@+id/field2"
-        app:layout_constraintStart_toStartOf="@+id/field2" />
-
-    <EditText
-        android:id="@+id/text3"
-        android:layout_width="95dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="4dp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:fontFamily="@font/quicksand"
-        android:hint="@string/hint_2"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/field3"
-        app:layout_constraintEnd_toEndOf="@+id/field3"
-        app:layout_constraintStart_toStartOf="@+id/field3" />
-
     <TextView
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="@string/type_mod"
         android:fontFamily="@font/quicksand_bold"
         android:text="@string/resource_2"
         android:textColor="@color/colorBack1"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintStart_toStartOf="@+id/header"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="60dp"
         android:layout_height="64dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="44dp"
         android:contentDescription="@string/type_mod"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintBottom_toBottomOf="@+id/subtitle"
+        app:layout_constraintEnd_toStartOf="@+id/subtitle"
+        app:layout_constraintTop_toTopOf="@+id/subtitle"
         app:srcCompat="@drawable/hs_icon" />
-
-    <ImageButton
-        android:id="@+id/size_b1"
-        android:layout_width="74dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/size_field"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/text2"
-        app:layout_constraintStart_toEndOf="@+id/field2"
-        app:layout_constraintTop_toTopOf="@+id/text2"
-        app:srcCompat="@drawable/size_field" />
-
-    <TextView
-        android:id="@+id/size1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:contentDescription="@string/type_mod"
-        android:fontFamily="@font/quicksand"
-        android:text="Bottles"
-        android:textColor="@color/colorBack2"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@+id/size_b1"
-        app:layout_constraintEnd_toEndOf="@+id/size_b1"
-        app:layout_constraintStart_toStartOf="@+id/size_b1"
-        app:layout_constraintTop_toTopOf="@+id/size_b1" />
-
-    <ImageButton
-        android:id="@+id/size_b2"
-        android:layout_width="74dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:background="@drawable/size_field"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/size_b1"
-        app:layout_constraintStart_toEndOf="@+id/size_b1"
-        app:layout_constraintTop_toTopOf="@+id/size_b1"
-        app:srcCompat="@drawable/size_field" />
-
-    <ImageButton
-        android:id="@+id/size_b3"
-        android:layout_width="74dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:background="@drawable/size_field"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@+id/size_b2"
-        app:layout_constraintStart_toEndOf="@+id/size_b2"
-        app:layout_constraintTop_toTopOf="@+id/size_b2"
-        app:srcCompat="@drawable/size_field" />
-
-    <TextView
-        android:id="@+id/size2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:contentDescription="@string/type_mod"
-        android:fontFamily="@font/quicksand"
-        android:text="oz"
-        android:textColor="@color/colorBack2"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@+id/size_b2"
-        app:layout_constraintEnd_toEndOf="@+id/size_b2"
-        app:layout_constraintStart_toStartOf="@+id/size_b2"
-        app:layout_constraintTop_toTopOf="@+id/size_b2" />
-
-    <TextView
-        android:id="@+id/size3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
-        android:contentDescription="@string/type_mod"
-        android:fontFamily="@font/quicksand"
-        android:text="mL"
-        android:textColor="@color/colorBack2"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@+id/size_b3"
-        app:layout_constraintEnd_toEndOf="@+id/size_b3"
-        app:layout_constraintStart_toStartOf="@+id/size_b3"
-        app:layout_constraintTop_toTopOf="@+id/size_b3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

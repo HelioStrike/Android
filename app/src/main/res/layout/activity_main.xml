@@ -5,12 +5,13 @@
     android:id="@+id/ui"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.MainActivity"
+    android:screenOrientation="portrait">
 
     <ImageButton
         android:id="@+id/header"
-        android:layout_width="427dp"
-        android:layout_height="514dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginBottom="400dp"
         android:background="@drawable/main_header"
         android:scaleType="fitXY"
@@ -18,6 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/main_header" />
 
     <ImageButton

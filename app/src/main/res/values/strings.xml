@@ -9,19 +9,18 @@
     <string name="hazard_mod" translatable="false">hazard</string>
 
     <string name="title" translatable="false">RESTOCK</string>
-    <string name="description_1">Don\'t panic!</string>
+    <string name="description_1">Plan ahead.</string>
 
-    <string name="description_2_1">Calculate your key resources:</string>
-    <string name="description_2_2">Calculate your key resources:</string>
+    <string name="description_2_1">What would you like to buy?</string>
+    <string name="description_2_2">What would you like to buy?</string>
 
-    <string name="description_3"> </string>
+    <string name="description_3" translatable="false"> </string>
 
     <string name="dir_1">1. Fill out the following information</string>
     <string name="dir_2">Days until you can go shopping again:</string>
 
     <string name="dir_4">How many people use this item in your household?</string>
 
-    <string name="dir_5_2" translatable="false">    use comparatively</string>
     <string name="slider_1" translatable="false">1 Use Daily</string>
     <string name="slider_2" translatable="false">9+ Uses Daily</string>
     <string name="calc">Calculate</string>
@@ -30,39 +29,37 @@
     <string name="resource_2">Hand Sanitizer</string>
     <string name="resource_3">Water Bottles</string>
 
-    <string name="coming_soon">More resources coming soon.</string>
+    <string name="coming_soon">More items coming soon.</string>
 
     <string name="hint_1">Day/s</string>
     <string name="hint_2">Quantity</string>
 
-    <string name="result_1">Your supply will last </string>
-    <string name="result_2"> days,</string>
-    <string name="result_3_pos" translatable="false">lasting </string>
-    <string name="result_3_pos_2" translatable="false"> days after </string>
-    <string name="result_3_pos_3" translatable="false"> your next shopping date.</string>
-    <string name="result_3_neg" translatable="false">leaving </string>
-    <string name="result_3_neg_2" translatable="false"> days without </string>
+    <string name="result_1" translatable="false">Your items will last </string>
+    <string name="result_2" translatable="false"> days.</string>
+    <string name="result_3_pos" translatable="false">You can shop </string>
+    <string name="result_3_pos_2" translatable="false"> days later </string>
+    <string name="result_3_pos_3" translatable="false"> than you expected.</string>
+    <string name="result_3_neg" translatable="false">You can shop </string>
+    <string name="result_3_neg_2" translatable="false"> days earlier </string>
 
     <string name="dir_3_hs" translatable="false">Current hand sanitizer count:</string>
-    <string name="dir_5_hs" translatable="false">2. How much do you use compared to the average person?</string>
+    <string name="dir_5_hs">2. How much do you use compared to the average person?</string>
 
-    <string name="login" translatable="false">Log In</string>
-    <string name="signup" translatable="false">Sign Up</string>
-    <string name="email" translatable="false">E-mail:</string>
+    <string name="home">Back to Home</string>
 
     <string-array name="results_3">
-        <item name="result_3_pos" translatable="false">lasting </item>
-        <item name="result_3_neg" translatable="false">leaving </item>
+        <item name="result_3_pos" translatable="false">You can shop </item>
+        <item name="result_3_neg" translatable="false">You should shop </item>
     </string-array>
 
     <string-array name="results_4">
-        <item name="result_3_pos_2" translatable="false"> days after </item>
-        <item name="result_3_neg_2" translatable="false"> days without </item>
+        <item name="result_3_pos_2" translatable="false"> days later </item>
+        <item name="result_3_neg_2" translatable="false"> days earlier </item>
     </string-array>
 
     <string-array name="results_5">
-        <item name="result_3_pos_3" translatable="false"> your next shopping date.</item>
-        <item name="result_3_neg_3" translatable="false"> supplies for your household.</item>
+        <item name="result_3_pos_3" translatable="false"> than you expected.</item>
+        <item name="result_3_neg_3" translatable="false"> than you expected.</item>
     </string-array>
 
     <string-array name="result_conclusions">
@@ -78,14 +75,14 @@
 
     <string-array name="resource_hints_1">
         <item name="hs">1 Use Daily</item>
-        <item name="tp">15 Sheets Daily</item>
+        <item name="tp">1 Bathroom Visit Daily</item>
         <item name="wb">1 Bottle Daily</item>
     </string-array>
 
     <string-array name="resource_hints_2">
         <item name="hs">9+ Uses Daily</item>
-        <item name="tp">75 Sheets daily</item>
-        <item name="wb">3+ Bottles Daily</item>
+        <item name="tp">9+ Bathroom Visits Daily</item>
+        <item name="wb">6+ Bottles Daily</item>
     </string-array>
 
     <string-array name="current_array">

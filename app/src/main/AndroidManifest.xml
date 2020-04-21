@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zachl.apocalypsecalculator">
+    package="com.zachl.restock">
 
     <application
         android:allowBackup="true"
@@ -9,32 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.LoginActivity">
+        <activity android:name="com.zachl.restock.activities.LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ResultsActivity"
-            android:parentActivityName=".activities.CalculatorActivity">
+            android:name="com.zachl.restock.activities.ResultsActivity"
+            android:parentActivityName="com.zachl.restock.activities.CalculatorActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.CalculatorActivity" />
+                android:value="com.zachl.restock.activities.CalculatorActivity" />
         </activity>
-        <activity android:name=".activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name="com.zachl.restock.activities.MainActivity"></activity>
         <activity
-            android:name=".activities.CalculatorActivity"
-            android:parentActivityName=".activities.MainActivity">
+            android:name="com.zachl.restock.activities.CalculatorActivity"
+            android:parentActivityName="com.zachl.restock.activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zachl.apocalypsecalculator.activities.MainActivity" />
+                android:value="com.zachl.restock.activities.MainActivity" />
         </activity>
 
         <meta-data
