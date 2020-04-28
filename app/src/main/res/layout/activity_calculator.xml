@@ -10,16 +10,16 @@
 
     <ScrollView
         android:id="@+id/scroll"
-        android:layout_width="0dp"
-        android:layout_height="503dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="612dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
         android:overScrollMode="never"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/scroll_container"
@@ -32,60 +32,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/percent_hint2"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="54dp"
-                    android:contentDescription="@string/type_mod"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:text="@string/slider_2"
-                    android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/rail"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/rail" />
-
                 <ImageButton
                     android:id="@+id/calc"
                     android:layout_width="143dp"
                     android:layout_height="36dp"
                     android:layout_marginStart="134dp"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="134dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/calc"
                     android:contentDescription="@string/color_mod"
                     android:onClick="changeImage"
                     android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/percent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView2"
                     app:srcCompat="@drawable/calc" />
 
                 <ImageButton
                     android:id="@+id/size_b2"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="8dp"
                     android:background="@drawable/size_field"
                     android:scaleType="fitXY"
-                    app:layout_constraintBottom_toBottomOf="@+id/size_b1"
-                    app:layout_constraintStart_toEndOf="@+id/size_b1"
-                    app:layout_constraintTop_toTopOf="@+id/size_b1"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/imageView"
                     app:srcCompat="@drawable/size_field" />
-
-                <TextView
-                    android:id="@+id/percent_hint1"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="54dp"
-                    android:contentDescription="@string/type_mod"
-                    android:fontFamily="@font/quicksand_bold"
-                    android:text="@string/slider_1"
-                    android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/rail"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/rail" />
 
                 <ImageView
                     android:id="@+id/field1"
@@ -109,40 +85,9 @@
                     app:layout_constraintTop_toBottomOf="@+id/prompt3"
                     app:srcCompat="@drawable/main_field" />
 
-                <ImageButton
-                    android:id="@+id/slider"
-                    style="@style/Widget.AppCompat.ImageButton"
-                    android:layout_width="78dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/slider"
-                    android:contentDescription="@string/color_mod"
-                    android:scaleType="fitXY"
-                    android:translationZ="1dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/rail"
-                    app:srcCompat="@drawable/slider" />
-
-                <TextView
-                    android:id="@+id/percent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="@font/quicksand_light"
-                    android:text="100%"
-                    android:textColor="@color/colorBack1"
-                    android:translationZ="1dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/rail"
-                    app:layout_constraintEnd_toEndOf="@+id/slider"
-                    app:layout_constraintStart_toStartOf="@+id/slider"
-                    app:layout_constraintTop_toTopOf="@+id/slider" />
-
                 <TextView
                     android:id="@+id/prompt2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="340dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -165,20 +110,8 @@
                     app:layout_constraintStart_toStartOf="@+id/calc"
                     app:layout_constraintTop_toTopOf="@+id/calc" />
 
-                <ImageView
-                    android:id="@+id/rail"
-                    android:layout_width="336dp"
-                    android:layout_height="33dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prompt5"
-                    app:srcCompat="@drawable/slide_rail" />
-
                 <EditText
-                    android:id="@+id/text3"
+                    android:id="@+id/text4"
                     android:layout_width="95dp"
                     android:layout_height="30dp"
                     android:background="@android:color/transparent"
@@ -187,7 +120,7 @@
                     android:hint="@string/hint_2"
                     android:inputType="number"
                     android:textAlignment="center"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/field3"
                     app:layout_constraintEnd_toEndOf="@+id/field3"
                     app:layout_constraintStart_toStartOf="@+id/field3"
@@ -202,23 +135,7 @@
                     android:scaleType="fitXY"
                     app:layout_constraintBottom_toBottomOf="@+id/size_b2"
                     app:layout_constraintStart_toEndOf="@+id/size_b2"
-                    app:layout_constraintTop_toTopOf="@+id/size_b1"
                     app:srcCompat="@drawable/size_field" />
-
-                <TextView
-                    android:id="@+id/size1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:contentDescription="@string/type_mod"
-                    android:fontFamily="@font/quicksand"
-                    android:text="Bottles"
-                    android:textColor="@color/colorBack2"
-                    android:textSize="12sp"
-                    android:translationZ="2dp"
-                    app:layout_constraintEnd_toEndOf="@+id/size_b1"
-                    app:layout_constraintStart_toStartOf="@+id/size_b1"
-                    app:layout_constraintTop_toTopOf="@+id/size_b1" />
 
                 <TextView
                     android:id="@+id/size2"
@@ -249,7 +166,7 @@
 
                 <TextView
                     android:id="@+id/prompt3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="340dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -265,11 +182,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="72dp"
                     android:fontFamily="@font/quicksand_bold"
                     android:text="@string/dir_1"
                     android:textSize="19sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
                 <EditText
                     android:id="@+id/text2"
@@ -281,23 +199,11 @@
                     android:hint="@string/hint_2"
                     android:inputType="number"
                     android:textAlignment="center"
-                    android:textSize="22sp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/field2"
                     app:layout_constraintEnd_toEndOf="@+id/field2"
                     app:layout_constraintStart_toStartOf="@+id/field2"
                     app:layout_constraintTop_toTopOf="@+id/field2" />
-
-                <ImageButton
-                    android:id="@+id/size_b1"
-                    android:layout_width="60dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/size_field"
-                    android:scaleType="fitXY"
-                    app:layout_constraintBottom_toBottomOf="@+id/field2"
-                    app:layout_constraintStart_toEndOf="@+id/field2"
-                    app:layout_constraintTop_toTopOf="@+id/field2"
-                    app:srcCompat="@drawable/size_field" />
 
                 <EditText
                     android:id="@+id/text1"
@@ -312,6 +218,7 @@
                     android:singleLine="false"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/field1"
                     app:layout_constraintEnd_toEndOf="@+id/field1"
                     app:layout_constraintStart_toStartOf="@+id/field1"
@@ -319,7 +226,7 @@
 
                 <TextView
                     android:id="@+id/prompt4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="340dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
@@ -327,7 +234,7 @@
                     android:text="@string/dir_4"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/field2" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                 <ImageView
                     android:id="@+id/field3"
@@ -354,6 +261,93 @@
                     app:layout_constraintEnd_toEndOf="@+id/size_b3"
                     app:layout_constraintStart_toStartOf="@+id/size_b3"
                     app:layout_constraintTop_toTopOf="@+id/size_b3" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    app:srcCompat="@drawable/main_field" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/type_mod"
+                    android:fontFamily="@font/quicksand"
+                    android:text="Bottle Size:"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/field2" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prompt5"
+                    app:srcCompat="@drawable/main_field" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/text3"
+                    android:layout_width="93dp"
+                    android:layout_height="34dp"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:fontFamily="@font/quicksand"
+                    android:hint="@string/hint_3"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toStartOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+                <EditText
+                    android:id="@+id/text5"
+                    android:layout_width="93dp"
+                    android:layout_height="34dp"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:fontFamily="@font/quicksand"
+                    android:hint="@string/hint_2"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+                <ImageButton
+                    android:id="@+id/help"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/help"
+                    android:scaleType="fitXY"
+                    android:tint="@color/colorBack2"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="@+id/imageView2"
+                    app:srcCompat="@drawable/help" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

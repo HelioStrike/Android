@@ -29,11 +29,10 @@ public class ViewManager extends Manager{
         super(activity, v, type, R.string.type_mod);
         sources.add(activity.getResources().getStringArray(R.array.resources));
         sources.add(activity.getResources().getStringArray(R.array.current_array));
-        sources.add(activity.getResources().getStringArray(R.array.resource_hints_1));
-        sources.add(activity.getResources().getStringArray(R.array.resource_hints_2));
         sources.add(activity.getResources().getStringArray(R.array.sizes1));
         sources.add(activity.getResources().getStringArray(R.array.sizes2));
-        sources.add(activity.getResources().getStringArray(R.array.sizes3));
+        sources.add(activity.getResources().getStringArray(R.array.size_array));
+        sources.add(activity.getResources().getStringArray(R.array.resource_dirs));
     }
 
     @Override

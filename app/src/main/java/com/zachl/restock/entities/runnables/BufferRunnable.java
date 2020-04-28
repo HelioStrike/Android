@@ -1,11 +1,12 @@
 package com.zachl.restock.entities.runnables;
 
-import com.zachl.restock.entities.runnables.interfaces.Buffer;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class BufferRunnable {
+    public interface Buffer{
+        void wake();
+    }
     private Buffer buffer;
     private Timer timer;
     private int time;
@@ -17,7 +18,6 @@ public class BufferRunnable {
         this.buffer = buffer;
     }
     public void start(){
-        final Buffer fbuffer = buffer;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -25,6 +25,7 @@ public class BufferRunnable {
                     time--;
                 else{
                     buffer.wake();
+                    end();
                 }
             }
         }, 0, refresh);

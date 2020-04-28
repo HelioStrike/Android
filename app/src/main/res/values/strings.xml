@@ -4,6 +4,7 @@
     <string name="hand_sanitizer" translatable="false">hs</string>
     <string name="water_bottles" translatable="false">wb</string>
 
+    <string name="null_key" translatable="false">nk</string>
     <string name="type_mod" translatable="false">type</string>
     <string name="color_mod" translatable="false">color</string>
     <string name="hazard_mod" translatable="false">hazard</string>
@@ -33,6 +34,7 @@
 
     <string name="hint_1">Day/s</string>
     <string name="hint_2">Quantity</string>
+    <string name="hint_3">Size</string>
 
     <string name="result_1" translatable="false">Your items will last </string>
     <string name="result_2" translatable="false"> days.</string>
@@ -42,8 +44,8 @@
     <string name="result_3_neg" translatable="false">You can shop </string>
     <string name="result_3_neg_2" translatable="false"> days earlier </string>
 
-    <string name="dir_3_hs" translatable="false">Current hand sanitizer count:</string>
-    <string name="dir_5_hs">2. How much do you use compared to the average person?</string>
+    <string name="dir_3_hs" translatable="false">Current hand sanitizer bottle count:</string>
+    <string name="dir_5_hs">2. How many times daily does an average member of your household use hand sanitizer?</string>
 
     <string name="home">Back to Home</string>
 
@@ -73,40 +75,37 @@
         <item name="resources_3">Water Bottles</item>
     </string-array>
 
-    <string-array name="resource_hints_1">
-        <item name="hs">1 Use Daily</item>
-        <item name="tp">1 Bathroom Visit Daily</item>
-        <item name="wb">1 Bottle Daily</item>
+    <string-array name="resource_dirs">
+        <item name="hs">2. How many times daily does an average member of your household use hand sanitizer?</item>
+        <item name="tp">2. How many times daily does an average member of your household use the bathroom?</item>
+        <item name="wb">2. How many water bottles does an average member of your household drink on a daily basis?</item>
     </string-array>
-
-    <string-array name="resource_hints_2">
-        <item name="hs">9+ Uses Daily</item>
-        <item name="tp">9+ Bathroom Visits Daily</item>
-        <item name="wb">6+ Bottles Daily</item>
+    <string-array name="resource_hints">
+        <item name="hs">Daily hand sanitizer usage, if it\'s used in place of washing your hands, can vary based on daily activites, such as cooking, sports, caring for a sick family member, etc. however 11 times per day is a recommended baseline. </item>
+        <item name="tp">The average person uses the bathroom around 7 times per day, however, gender, age, and pre-existing conditions can cause changes to your daily routine.</item>
+        <item name="wb">Health authorities suggest the average person drink 64 oz. (1.9 L) of water per day. This is subject to change based on weight and similar variables.</item>
     </string-array>
-
     <string-array name="current_array">
-        <item name="dir_3_hs">Current hand sanitizer count:</item>
+        <item name="dir_3_hs">Current hand sanitizer bottle count:</item>
         <item name="dir_3_tp">Current toilet paper roll count:</item>
         <item name="dir_3_wb">Current water bottle count:</item>
+    </string-array>
+    <string-array name="size_array">
+        <item name="dir_3_hs">Bottle size:</item>
+        <item name="dir_3_tp">Roll size:</item>
+        <item name="dir_3_wb">Bottle size:</item>
     </string-array>
     <string-array name="quotes">
         <item name="q1">"Freedom is control in your own life" - Willie Nelson</item>
     </string-array>
-
     <string-array name="sizes1">
-        <item name="hs">Bottles</item>
-        <item name="tp">Rolls</item>
-        <item name="wb">Bottles</item>
-    </string-array>
-    <string-array name="sizes2">
         <item name="hs">oz</item>
-        <item name="tp">Mega Rolls</item>
+        <item name="tp">Sheets</item>
         <item name="wb">oz</item>
     </string-array>
-    <string-array name="sizes3">
+    <string-array name="sizes2">
         <item name="hs">mL</item>
-        <item name="tp">Sheets</item>
+        <item name="tp">nk</item>
         <item name="wb">mL</item>
     </string-array>
 </resources>

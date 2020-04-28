@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "418190539773",
+    "firebase_url": "https://restock-4c9b8.firebaseio.com",
+    "project_id": "restock-4c9b8",
+    "storage_bucket": "restock-4c9b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418190539773:android:5d8d3dd602c367e75ab794",
+        "android_client_info": {
+          "package_name": "com.zachl.restock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418190539773-nh6gsmors9pt1rkuf7ejo8nv9occk4qf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zachl.restock",
+            "certificate_hash": "04b366d5750123c3d735af9060f12197c7c5a12a"
+          }
+        },
+        {
+          "client_id": "418190539773-h53taf13ntcd5e22bbvf53160n15n49f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXMnfr7dcF-FWrCLJOVrF1q8W4VnnpCjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418190539773-h53taf13ntcd5e22bbvf53160n15n49f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,12 +13,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.zachl.restock.R;
-import com.zachl.restock.entities.runnables.interfaces.Buffer;
 import com.zachl.restock.entities.runnables.BufferRunnable;
 import com.zachl.restock.entities.runnables.UpdateRunnable;
-import com.zachl.restock.entities.runnables.interfaces.Updating;
+import com.zachl.restock.entities.wrappers.ExpandingButton;
 
-public class MainActivity extends AppCompatActivity implements Updating {
+public class MainActivity extends AppCompatActivity{
     /**
      * Every activity is a screen/page on the app
      */
@@ -71,9 +70,31 @@ public class MainActivity extends AppCompatActivity implements Updating {
         wb.setOnTouchListener(buttonL);
         //desc.setOnTouchListener(buttonL);
 
+        /*ExpandingButton tpB = new ExpandingButton(getApplicationContext(), tp, new ExpandingButton.Triggerable() {
+            @Override
+            public void trigger(View view) {
+                switch(view.getId()){
+                    case R.id.header:
+                        if(descI == descSrces.length - 1)
+                            descI = -1;
+                        descI++;
+                        descT.setText(descSrces[descI]);
+                        break;
+                    default:
+                        if(!initd) {
+                            Intent intent = new Intent(getApplicationContext(), CalculatorActivity.class);
+                            intent.putExtra(EXTRA, view.getContentDescription());
+                            startActivity(intent);
+                            bufferR.end();
+                            bufferR = null;
+                            initd = true;
+                        }
+                }
+            }
+        });*/
         ui = findViewById(R.id.ui);
 
-        BufferRunnable buffer = new BufferRunnable(new Buffer() {
+        BufferRunnable buffer = new BufferRunnable(new BufferRunnable.Buffer() {
             @Override
             public void wake() {
                 runOnUiThread(new Runnable() {
@@ -100,13 +121,13 @@ public class MainActivity extends AppCompatActivity implements Updating {
         constraintSet.applyTo(ui);
     }
 
-    public void expand(View view, final float target, float scaleIncr){
+    public void expand(View view, final float target, final float scaleIncr){
         if(updateR != null && updateR.running()){
             updateR.end();
         }
         final View fview = view;
         if(bufferR == null) {
-            bufferR = new BufferRunnable(new Buffer() {
+            bufferR = new BufferRunnable(new BufferRunnable.Buffer() {
                 @Override
                 public void wake() {
                     trigger(fview);
@@ -118,7 +139,22 @@ public class MainActivity extends AppCompatActivity implements Updating {
                 bufferR = null;
             }
         }
-        updateR = new UpdateRunnable(this);
+        updateR = new UpdateRunnable(new UpdateRunnable.Updater() {
+            @Override
+            public void update(View view) {
+                if (tempScale > target + 0.02f || tempScale < target -0.02f) {
+                    tempScale += scaleIncr;
+                    view.setScaleY(tempScale);
+                    view.setScaleX(tempScale);
+                } else {
+                    updateR.end();
+                    if(target <= 1){
+                        triggered = false;
+                        initd = false;
+                    }
+                }
+            }
+        });
         updateR.start(view);
         this.scaleIncr = scaleIncr;
         this.target = target;
@@ -141,20 +177,6 @@ public class MainActivity extends AppCompatActivity implements Updating {
                     bufferR = null;
                     initd = true;
                 }
-        }
-    }
-    @Override
-    public void update(View view) {
-        if (tempScale > target + 0.02f || tempScale < target -0.02f) {
-            tempScale += scaleIncr;
-            view.setScaleY(tempScale);
-            view.setScaleX(tempScale);
-        } else {
-            updateR.end();
-            if(target <= 1){
-                triggered = false;
-                initd = false;
-            }
         }
     }
 }

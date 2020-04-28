@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,16 +14,14 @@ import android.widget.TextView;
 import com.zachl.restock.R;
 import com.zachl.restock.entities.managers.HazardManager;
 import com.zachl.restock.entities.math.Function;
-import com.zachl.restock.entities.runnables.interfaces.Buffer;
 import com.zachl.restock.entities.runnables.BufferRunnable;
 import com.zachl.restock.entities.runnables.UpdateRunnable;
-import com.zachl.restock.entities.runnables.interfaces.Updating;
 import com.zachl.restock.entities.wrappers.ManagedActivity;
 
 import java.util.ArrayList;
 
-public class ResultsActivity extends ManagedActivity implements Updating {
-    private int[] answers = new int[5];
+public class ResultsActivity extends ManagedActivity{
+    private int[] answers = new int[6];
     private String type;
     private Function.Multiplier eq;
     private double[] results;
@@ -39,7 +38,10 @@ public class ResultsActivity extends ManagedActivity implements Updating {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_key1);
-
+        /**
+         * RESTPOINT 2 - PUSH
+         * - This requires all of the users entered data AND location - which we don't have set up yet
+         */
         Intent intent = getIntent();
         type = intent.getStringExtra(MainActivity.EXTRA);
         icon = findViewById(R.id.icon2);
@@ -47,11 +49,10 @@ public class ResultsActivity extends ManagedActivity implements Updating {
         av.add((ViewGroup)icon.getParent());
         av.add((ViewGroup)findViewById(R.id.textLayout));
         build(av, type, Package.Default);
-        for(int i = 0; i < answers.length - 2; i++){
+        for(int i = 0; i < answers.length - 1; i++){
             answers[i] = Integer.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_SUFF + i));
         }
-        answers[3] = (Float.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_PERCENT))).intValue();
-        answers[4] = (Float.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_SIZE))).intValue();
+        answers[answers.length - 1] = (Float.valueOf(intent.getStringExtra(MainActivity.EXTRA + CalculatorActivity.EXTRA_SIZE))).intValue();
 
         switch(type){
             case "hs":
@@ -72,7 +73,7 @@ public class ResultsActivity extends ManagedActivity implements Updating {
         calcs[0] = findViewById(R.id.results1);
         calcs[1] = findViewById(R.id.results2);
         ui = findViewById(R.id.menu);
-        BufferRunnable buffer = new BufferRunnable(new Buffer() {
+        BufferRunnable buffer = new BufferRunnable(new BufferRunnable.Buffer() {
             @Override
             public void wake() {
                 runOnUiThread(new Runnable() {
@@ -85,7 +86,7 @@ public class ResultsActivity extends ManagedActivity implements Updating {
         }, headerBuffer);
         buffer.start();
 
-       buffer2 = new BufferRunnable(new Buffer() {
+       buffer2 = new BufferRunnable(new BufferRunnable.Buffer() {
             @Override
             public void wake() {
                 textChange();
@@ -106,27 +107,28 @@ public class ResultsActivity extends ManagedActivity implements Updating {
     }
     public void textChange(){
         buffer2.end();
-        updateR = new UpdateRunnable(this, 50);
-        updateR.start(calcs[resultI]);
-    }
-    @Override
-    public void update(View view) {
-        if(Integer.valueOf(((TextView)view).getText().toString()) < results[resultI]){
-            final View fview = view;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    ((TextView)fview).setText(Integer.toString(Integer.valueOf(((TextView)fview).getText().toString()) + 1));
+        updateR = new UpdateRunnable(new UpdateRunnable.Updater() {
+            @Override
+            public void update(View view) {
+                if(Integer.valueOf(((TextView)view).getText().toString()) < results[resultI]){
+                    final View fview = view;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((TextView)fview).setText(Integer.toString(Integer.valueOf(((TextView)fview).getText().toString()) + 1));
+                        }
+                    });
                 }
-            });
-        }
-        else{
-            updateR.end();
-            ((TextView)view).setText("" + (int)results[resultI]);
-            if(resultI < 1) {
-                resultI++;
-                textChange();
+                else{
+                    updateR.end();
+                    ((TextView)view).setText("" + (int)results[resultI]);
+                    if(resultI < 1) {
+                        resultI++;
+                        textChange();
+                    }
+                }
             }
-        }
+        }, 50);
+        updateR.start(calcs[resultI]);
     }
 }
