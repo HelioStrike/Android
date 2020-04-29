@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.zachl.restock.R;
 import com.zachl.restock.entities.requests.UsageVariablesRequest;
-import com.zachl.restock.entities.runnables.interfaces.Buffer;
 import com.zachl.restock.entities.runnables.BufferRunnable;
 import com.zachl.restock.entities.runnables.UpdateRunnable;
 import com.zachl.restock.entities.wrappers.ExpandingButton;
